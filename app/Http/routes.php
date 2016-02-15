@@ -29,3 +29,12 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+//API routes
+Route::get('/news', ['middleware' => 'auth.basic'], function(){
+   return Response::json(array(
+       'error' => false,
+       'news' => 'articles go here',
+       'status_code' => 200
+   ));
+});
