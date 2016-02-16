@@ -12,7 +12,9 @@ class EventsController extends Controller
     function getEvents(){
         return response()->json(array(
             'status' => 'success',
-            'news' => 'events go here',
+            'data' => array(
+                'news' => 'events go here',
+            )
         ), 200);
     }
 
@@ -21,7 +23,7 @@ class EventsController extends Controller
             return response()->json(array(
                 'status' => 'success',
                 'data' => array(
-                    'news' => "event $event_id goes here",
+                    'event' => "event $event_id goes here",
                 )
             ), 200);
         }else{

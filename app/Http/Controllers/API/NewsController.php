@@ -22,7 +22,7 @@ class NewsController extends Controller
             return response()->json(array(
                 'error' => false,
                 'data' => array(
-                    'news' => "article $article_id goes here",
+                    'article' => "article $article_id goes here",
                 )
             ), 200);
         }else{
