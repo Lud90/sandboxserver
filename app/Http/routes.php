@@ -31,7 +31,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 //API routes
-Route::get('/news', ['middleware' => 'auth.basic'], function(){
+Route::get('/news', function(){
    return Response::json(array(
        'error' => false,
        'news' => 'articles go here',
