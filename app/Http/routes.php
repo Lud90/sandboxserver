@@ -30,11 +30,16 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-//API routes
-Route::get('/news', function(){
-   return Response::json(array(
-       'error' => false,
-       'news' => 'articles go here',
-       'status_code' => 200
-   ));
-});
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| These routes pertain to the Sandboxes API.
+|
+*/
+Route::get('/api/news', 'API\NewsController@getNews');
+Route::get('/api/news/{article_id}', 'API\NewsController@getArticle');
+
+Route::get('/api/events', 'API\EventsController@getEvents');
+Route::get('/api/events/{event_id}', 'API\EventsController@getEvent');
