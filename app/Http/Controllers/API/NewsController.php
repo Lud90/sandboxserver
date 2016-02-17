@@ -9,25 +9,31 @@ use App\Http\Controllers\Controller;
 class NewsController extends Controller
 {
     function getNews(){
+
+        $results = \App\News::with('sandboxes')->get()->sortByDesc('publish_at')->forPage(1,20);
+
         return response()->json(array(
             'error' => false,
             'data' => array(
-                'news' => 'articles go here',
+                'news' => $results,
             )
         ), 200);
     }
 
     function getArticle($article_id){
-        if(is_numeric($article_id)) {
+
+        $result = \App\News::with('sandboxes')->find($article_id);
+
+        if($result != null) {
             return response()->json(array(
                 'error' => false,
                 'data' => array(
-                    'article' => "article $article_id goes here",
+                    'article' => $result,
                 )
             ), 200);
         }else{
             return response()->json(array(
-                'error' => "article_id must be a number",
+                'error' => "Invalid article_id",
             ), 400);
         }
     }

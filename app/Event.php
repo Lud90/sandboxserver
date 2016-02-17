@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class Event extends Model
 {
-    protected $table = 'news';
-    protected $fillable = ['title', 'author', 'content', 'url', 'publish_at'];
+    protected $fillable = ['title', 'content', 'url', 'start_time', 'end_time'];
     protected $hidden = array('pivot');
 
     public function sandboxes(){
