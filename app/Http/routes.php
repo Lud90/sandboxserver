@@ -43,3 +43,6 @@ Route::get('/api/news/{article_id}', 'API\NewsController@getArticle');
 
 Route::get('/api/events', 'API\EventsController@getEvents');
 Route::get('/api/events/{event_id}', 'API\EventsController@getEvent');
+
+Route::get('/api/sandboxes', 'API\SandboxesController@getSandboxes');
+Route::get('/api/sandbox/{sandbox_id}', 'API\SandboxesController@getSandbox');
