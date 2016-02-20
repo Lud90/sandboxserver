@@ -3,7 +3,7 @@ info:
   title: NS Sandbox API
   description: An API to interact data from NS Sandboxes
   version: "0.0.5"
-#host: hostname
+host: outreach.cs.dal.ca/sandboxes/public
 schemes:
   - http
   - https

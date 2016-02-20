@@ -5,6 +5,7 @@
         "description": "An API to interact data from NS Sandboxes",
         "version": "0.0.5"
     },
+    "host": "outreach.cs.dal.ca/sandboxes/public",
     "schemes": [
         "http",
         "https"
