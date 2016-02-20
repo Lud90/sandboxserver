@@ -5,6 +5,7 @@ info:
   version: "0.0.5"
 #host: hostname
 schemes:
+  - http
   - https
 # basePath will be prefixed to all paths
 basePath: /api
