@@ -12,12 +12,7 @@ class EventsController extends Controller
     function getEvents(){
 
         $results = \App\Event::with('sandboxes')->get()->sortBy('start_time')->forPage(1,20);
-        return response()->json(array(
-            'status' => 'success',
-            'data' => array(
-                'events' => $results,
-            )
-        ), 200);
+        return response()->json($results, 200);
     }
 
     function getEvent($event_id){
@@ -25,17 +20,11 @@ class EventsController extends Controller
         $result = \App\Event::with('sandboxes')->find($event_id);
 
         if($result != null) {
-            return response()->json(array(
-                'status' => 'success',
-                'data' => array(
-                    'event' => $result,
-                )
-            ), 200);
+            return response()->json($result, 200);
         }else{
             return response()->json(array(
-                'status' => 'error',
-                'data' => array('event_id' =>"event_id must be a number"),
-            ), 400);
+                'error' => "event_id must be a number", 400
+            ));
         }
     }
 }

@@ -38,6 +38,7 @@ Route::group(['middleware' => ['web']], function () {
 | These routes pertain to the Sandboxes API.
 |
 */
+
 Route::get('/api/news', 'API\NewsController@getNews');
 Route::get('/api/news/{article_id}', 'API\NewsController@getArticle');
 
@@ -45,4 +46,4 @@ Route::get('/api/events', 'API\EventsController@getEvents');
 Route::get('/api/events/{event_id}', 'API\EventsController@getEvent');
 
 Route::get('/api/sandboxes', 'API\SandboxesController@getSandboxes');
-Route::get('/api/sandbox/{sandbox_id}', 'API\SandboxesController@getSandbox');
+Route::get('/api/sandboxes/{sandbox_id}', 'API\SandboxesController@getSandbox');
