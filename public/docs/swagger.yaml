@@ -3,7 +3,7 @@ info:
   title: NS Sandbox API
   description: An API to interact data from NS Sandboxes
   version: "0.0.5"
-host: outreach.cs.dal.ca/sandboxes/public
+host: "outreach.cs.dal.ca/sandboxes/public"
 schemes:
   - http
   - https
@@ -49,7 +49,7 @@ paths:
   /news/{article_id}:
     get:
       summary: Get a single article
-      description: The Article endpoint returns all information on a single article
+      description: Returns all information on a single article
       parameters:
         - name: article_id
           in: path
@@ -104,11 +104,11 @@ paths:
   /events/{event_id}:
     get:
       summary: Get a single event
-      description: The Event endpoint returns all information on a single event
+      description: Returns all information on a single event
       parameters:
         - name: event_id
           in: path
-          description: The id of the event to fetched
+          description: The id of the event to fetch
           type: number
           format: int
           required: true
@@ -136,6 +136,28 @@ paths:
             type: array
             items:
               $ref: '#/definitions/sandbox'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/error'
+  /sandboxes/{sandbox_id}:
+    get:
+      summary: Get one sandboxes
+      description: Returns all information on a single sandbox
+      parameters:
+        - name: sandbox_id
+          in: path
+          description: the id of the sandbox to fetch
+          type: number
+          format: int
+          required: true
+      tags: 
+        - Sandboxes
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/sandbox'
         default:
           description: Unexpected error
           schema:

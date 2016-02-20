@@ -68,7 +68,7 @@
         "/news/{article_id}": {
             "get": {
                 "summary": "Get a single article",
-                "description": "The Article endpoint returns all information on a single article",
+                "description": "Returns all information on a single article",
                 "parameters": [
                     {
                         "name": "article_id",
@@ -149,12 +149,12 @@
         "/events/{event_id}": {
             "get": {
                 "summary": "Get a single event",
-                "description": "The Event endpoint returns all information on a single event",
+                "description": "Returns all information on a single event",
                 "parameters": [
                     {
                         "name": "event_id",
                         "in": "path",
-                        "description": "The id of the event to fetched",
+                        "description": "The id of the event to fetch",
                         "type": "number",
                         "format": "int",
                         "required": true
@@ -194,6 +194,39 @@
                             "items": {
                                 "$ref": "#/definitions/sandbox"
                             }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sandboxes/{sandbox_id}": {
+            "get": {
+                "summary": "Get one sandboxes",
+                "description": "Returns all information on a single sandbox",
+                "parameters": [
+                    {
+                        "name": "sandbox_id",
+                        "in": "path",
+                        "description": "the id of the sandbox to fetch",
+                        "type": "number",
+                        "format": "int",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Sandboxes"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/sandbox"
                         }
                     },
                     "default": {
