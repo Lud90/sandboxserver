@@ -1,0 +1,363 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "NS Sandbox API",
+        "description": "An API to interact data from NS Sandboxes",
+        "version": "0.0.5"
+    },
+    "host": "outreach.cs.dal.ca/sandboxes/public",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "basePath": "/api",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/news": {
+            "get": {
+                "summary": "Get a news page",
+                "description": "The News endpoint returns the 20 most recent article titles, excerpts, and thumbnails.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "description": "The page to return",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "sandboxes",
+                        "in": "query",
+                        "description": "A comma-separated list of sandbox_ids. Filters news articles to specified sandboxes",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "tags": [
+                    "News"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/news"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/news/{article_id}": {
+            "get": {
+                "summary": "Get a single article",
+                "description": "Returns all information on a single article",
+                "parameters": [
+                    {
+                        "name": "article_id",
+                        "in": "path",
+                        "description": "The id of the article to fetch",
+                        "type": "number",
+                        "format": "int",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "News"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/article"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/events": {
+            "get": {
+                "summary": "Get an events page",
+                "description": "The Events endpoint returns the 20 most recent event names, excerpts, times, locations, and thumbnails",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page to return",
+                        "required": false,
+                        "default": 1,
+                        "type": "number",
+                        "format": "int"
+                    },
+                    {
+                        "name": "sandboxes",
+                        "in": "query",
+                        "description": "A comma-separated list of sandbox shortcodes. Filters news articles to specified sandboxes",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "tags": [
+                    "Events"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/events"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/events/{event_id}": {
+            "get": {
+                "summary": "Get a single event",
+                "description": "Returns all information on a single event",
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "The id of the event to fetch",
+                        "type": "number",
+                        "format": "int",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Events"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/event"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sandboxes": {
+            "get": {
+                "summary": "Get all sandboxes",
+                "description": "The Sandboxes endpoint returns all information on the sandboxes",
+                "tags": [
+                    "Sandboxes"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/sandbox"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        },
+        "/sandboxes/{sandbox_id}": {
+            "get": {
+                "summary": "Get one sandboxes",
+                "description": "Returns all information on a single sandbox",
+                "parameters": [
+                    {
+                        "name": "sandbox_id",
+                        "in": "path",
+                        "description": "the id of the sandbox to fetch",
+                        "type": "number",
+                        "format": "int",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Sandboxes"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/sandbox"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "news": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "postDate": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "article": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "postDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "events": {
+            "type": "object",
+            "required": [
+                "id",
+                "title",
+                "content",
+                "startTime"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "startTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The datetime the event starts"
+                },
+                "endTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The datetime the event ends (may not be specified)"
+                }
+            }
+        },
+        "event": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "startTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The time the event starts"
+                },
+                "endTime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The time the event ends"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "sandbox": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "sandbox_id"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "error": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -12,12 +12,7 @@ class NewsController extends Controller
 
         $results = \App\News::with('sandboxes')->get()->sortByDesc('publish_at')->forPage(1,20);
 
-        return response()->json(array(
-            'error' => false,
-            'data' => array(
-                'news' => $results,
-            )
-        ), 200);
+        return response()->json($results, 200);
     }
 
     function getArticle($article_id){
@@ -25,12 +20,7 @@ class NewsController extends Controller
         $result = \App\News::with('sandboxes')->find($article_id);
 
         if($result != null) {
-            return response()->json(array(
-                'error' => false,
-                'data' => array(
-                    'article' => $result,
-                )
-            ), 200);
+            return response()->json($result, 200);
         }else{
             return response()->json(array(
                 'error' => "Invalid article_id",
