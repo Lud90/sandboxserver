@@ -43,3 +43,18 @@ Route::get('/api/news/{article_id}', 'API\NewsController@getArticle');
 
 Route::get('/api/events', 'API\EventsController@getEvents');
 Route::get('/api/events/{event_id}', 'API\EventsController@getEvent');
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+|
+| These routes pertain to the Sandboxes App Administration system.
+|
+*/
+
+Route::get('/admin/', function()
+{
+    return View::make('login');
+});
