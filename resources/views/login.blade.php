@@ -3,5 +3,7 @@
 @section('title', 'Login')
 
 @section('body')
-    Login Page
+    <div class="valign-wrapper">
+        <div class="valign"></div>
+    </div>
 @endsection
