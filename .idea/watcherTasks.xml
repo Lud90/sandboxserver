@@ -2,20 +2,39 @@
 <project version="4">
   <component name="ProjectTasksOptions">
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="--no-cache --update $FileName$:../css/$FileNameWithoutExtension$.css" />
+      <option name="arguments" value="--no-cache --update $Projectpath$\public\sass\materialize\materialize.scss:$Projectpath$\public\css\materialize.css" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" value="Compiles .scss files into .css files" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="scss" />
       <option name="immediateSync" value="true" />
-      <option name="name" value="SCSS" />
+      <option name="name" value="Materialize" />
       <option name="output" value=".../css/$FileNameWithoutExtension$.css" />
       <option name="outputFilters">
         <array />
       </option>
       <option name="outputFromStdout" value="false" />
+      <option name="program" value="C:/Ruby22-x64/bin/sass.bat" />
+      <option name="scopeName" value="Materialize" />
+      <option name="trackOnlyRoot" value="true" />
+      <option name="workingDir" value="$FileDir$" />
+      <envs />
+    </TaskOptions>
+    <TaskOptions isEnabled="true">
+      <option name="arguments" value="--no-cache --update $FileName$:$Projectpath$\public\css\$FileNameWithoutExtension$.css" />
+      <option name="checkSyntaxErrors" value="true" />
+      <option name="description" value="Compiles .scss files into .css files" />
+      <option name="exitCodeBehavior" value="ERROR" />
+      <option name="fileExtension" value="scss" />
+      <option name="immediateSync" value="true" />
+      <option name="name" value="Non-Materialize" />
+      <option name="output" value="$FileNameWithoutExtension$.css" />
+      <option name="outputFilters">
+        <array />
+      </option>
+      <option name="outputFromStdout" value="false" />
       <option name="program" value="C:/RailsInstaller/Ruby2.1.0/bin/scss.bat" />
-      <option name="scopeName" value="Project Files" />
+      <option name="scopeName" value="Non-Materialize" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$FileDir$" />
       <envs />
