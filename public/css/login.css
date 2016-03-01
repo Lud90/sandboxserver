@@ -1,0 +1,20 @@
+html {
+  height: 100vh; }
+
+body {
+  height: 100vh;
+  background: url("/img/blue_gradient.jpg");
+  background-size: cover; }
+
+.login-wrapper {
+  height: 100%; }
+  .login-wrapper .valign {
+    min-width: 250px;
+    max-width: 400px;
+    width: 20%; }
+
+.card-action.block-buttons {
+  padding: 0; }
+  .card-action.block-buttons a {
+    display: inline-block;
+    padding: 20px; }
