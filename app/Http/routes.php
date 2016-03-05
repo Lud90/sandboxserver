@@ -60,3 +60,7 @@ Route::get('/admin/', function()
 {
     return View::make('login');
 });
+
+Route::get('/admin/eventadd/', function () {
+    return View::make('eventadd');
+});
