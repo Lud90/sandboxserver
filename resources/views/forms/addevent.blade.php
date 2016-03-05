@@ -5,8 +5,7 @@
  * Time: 8:48 PM
  */
  -->
-<div class="row">
-    <div class="container">
+<div class="col s9">
         <div class="card-panel">
             <h3>Create an Event:</h3>
             <form>
@@ -42,7 +41,7 @@
                         <input class="file-path validate" type="text">
                     </div>
                 </div>
+                <a class="waves-effect waves-light btn">Submit</a>
             </form>
         </div>
     </div>
-</div>

@@ -17,6 +17,14 @@
 
 @section('body')
     <body>
-    @include('forms.addevent')
+    <div class="row">
+        <div class="card-panel">
+            <h1>Add Event</h1>
+        </div>
+    </div>
+    <div class="row"> <!-- the main content and side bar -->
+        @include('partials.sidebar')
+        @include('forms.addevent')
+    </div>
     </body>
 @endsection
