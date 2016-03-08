@@ -19,33 +19,35 @@
                 <label for="description">Description</label>
             </div>
             <h5>Sandboxes Involved:</h5>
-            <div class="col s6">
-                <p>
-                    <input type="checkbox" id="shiftkeylabs"/>
-                    <label for="shiftkeylabs">ShiftKey Labs</label>
-                </p>
-                <p>
-                    <input type="checkbox" id="idea"/>
-                    <label for="idea">Idea</label>
-                </p>
-                <p>
-                    <input type="checkbox" id="cultiv8"/>
-                    <label for="cultiv8">Cultiv8</label>
-                </p>
-            </div>
-            <div class="col s6">
-                <p>
-                    <input type="checkbox" id="sisland"/>
-                    <label for="island">Island</label>
-                </p>
-                <p>
-                    <input type="checkbox" id="launchbox"/>
-                    <label for="launchbox">LaunchBox</label>
-                </p>
-                <p>
-                    <input type="checkbox" id="sparkzone"/>
-                    <label for="sparkzone">Spark Zone</label>
-                </p>
+            <div class="row">
+                <div class="col s6">
+                    <p>
+                        <input type="checkbox" id="shiftkeylabs"/>
+                        <label for="shiftkeylabs">ShiftKey Labs</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="idea"/>
+                        <label for="idea">Idea</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="cultiv8"/>
+                        <label for="cultiv8">Cultiv8</label>
+                    </p>
+                </div>
+                <div class="col s6">
+                    <p>
+                        <input type="checkbox" id="sisland"/>
+                        <label for="island">Island</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="launchbox"/>
+                        <label for="launchbox">LaunchBox</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="sparkzone"/>
+                        <label for="sparkzone">Spark Zone</label>
+                    </p>
+                </div>
             </div>
             <div class="row">
                 <h5>Event Image:</h5>
