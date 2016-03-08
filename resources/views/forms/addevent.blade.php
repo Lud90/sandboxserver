@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col s6"> {{-- left colunm at top of form--}}
                     <div class="input-field">
-                        <input type="text" id="title" name="title" class=""/>
+                        <input type="text" id="title" name="title" class="validate"/>
                         <label for="title">Title</label>
                     </div>
                     <h5>Sandboxes Involved:</h5>
