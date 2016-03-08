@@ -18,9 +18,7 @@
 @section('body')
     <body>
     <div class="row">
-        <div class="card-panel">
-            <h1>Add Event</h1>
-        </div>
+        @include('partials.header')
     </div>
     <div class="row"> <!-- the main content and side bar -->
         @include('partials.sidebar')
