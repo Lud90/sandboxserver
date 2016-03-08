@@ -6,10 +6,15 @@
                 <input type="text" id="title" name="title" class="validate"/>
                 <label for="title">Title</label>
             </div>
-            <div class="input-field">
-                        <textarea type="text" id="description" name="description"
-                                  class="materialize-textarea"></textarea>
-                <label for="description">Description</label>
+            <h5>Event Image:</h5>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Image</span>
+                    <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
             </div>
             <h5>Sandboxes Included:</h5>
             <div class="row">
@@ -42,17 +47,13 @@
                     </p>
                 </div>
             </div>
+            <div class="input-field">
+                        <textarea type="text" id="description" name="description"
+                                  class="materialize-textarea"></textarea>
+                <label for="description">Description</label>
+            </div>
             <div class="row">
-                <h5>Event Image:</h5>
-                <div class="file-field input-field">
-                    <div class="btn">
-                        <span>Image</span>
-                        <input type="file">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
-                </div>
+
                 <a class="waves-effect waves-light btn">Submit</a>
             </div>
         </form>
