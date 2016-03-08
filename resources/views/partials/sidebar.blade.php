@@ -1,5 +1,5 @@
 <!--
-    This is the side bar that will accompany all admin pages
+    This is the side bar that will accompany all admin pages.
  -->
 <div class="col s3">
     <ul class="collection collapsible" data-collapsible="accordion">
