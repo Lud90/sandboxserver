@@ -36,7 +36,7 @@
                 </div>
                 <div class="col s6">
                     <p>
-                        <input type="checkbox" id="sisland"/>
+                        <input type="checkbox" id="island"/>
                         <label for="island">Island</label>
                     </p>
                     <p>
