@@ -13,6 +13,7 @@
                 <input type="text" id="title" name="title" class="validate"/>
                 <label for="title">Title</label>
             </div>
+            <input type="date" class="datepicker">
             <div class="input-field">
                         <textarea type="text" id="description" name="description"
                                   class="materialize-textarea"></textarea>
@@ -65,3 +66,9 @@
         </form>
     </div>
 </div>
+<script>
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+</script>
