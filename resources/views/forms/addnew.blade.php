@@ -1,46 +1,17 @@
-<!--
- * Created by PhpStorm
- * User: cole
- * Date: 04/03/16
- * Time: 8:48 PM
- * this is just a form for adding events
- -->
 <div class="col s9">
     <div class="card-panel">
         <h3>Create an Event:</h3>
         <form>
-            <div class="row">
-                <div class="col s6">
-                    <div class="input-field">
-                        <input type="text" id="title" name="title" class="validate"/>
-                        <label for="title">Title</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input type="text" id="start" name="start" class="validate"/>
-                        <label for="start">Start Date</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input type="text" id="end" name="end" class="validate"/>
-                        <label for="end">End Date</label>
-                    </div>
-                </div>
-                <div class="col s6">
-                    <div class="input-field">
-                        <input type="text" id="location" name="location" class="validate"/>
-                        <label for="location">Location</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" id="link" name="link" class="validate"/>
-                        <label for="link">Website (Optional)</label>
-                    </div>
-                </div>
+            <div class="input-field">
+                <input type="text" id="title" name="title" class="validate"/>
+                <label for="title">Title</label>
             </div>
             <div class="input-field">
                         <textarea type="text" id="description" name="description"
                                   class="materialize-textarea"></textarea>
                 <label for="description">Description</label>
             </div>
-            <h5>Sandboxes Involved:</h5>
+            <h5>Sandboxes Included:</h5>
             <div class="row">
                 <div class="col s6">
                     <p>
