@@ -3,7 +3,7 @@
  * User: cole
  * Date: 04/03/16
  * Time: 8:48 PM
- */
+ * this is just a form for adding events
  -->
 <div class="col s9">
     <div class="card-panel">
@@ -13,11 +13,15 @@
                 <input type="text" id="title" name="title" class="validate"/>
                 <label for="title">Title</label>
             </div>
-            <input type="date" class="datepicker">
             <div class="input-field">
                         <textarea type="text" id="description" name="description"
                                   class="materialize-textarea"></textarea>
                 <label for="description">Description</label>
+            </div>
+            <div class="input">
+                <input type="date" id="eventdate"
+                       class="datepicker"> {{-- Can't get this to work, going to come back to it --}}
+                <label for="eventdate">Date of Event</label>
             </div>
             <h5>Sandboxes Involved:</h5>
             <div class="row">
@@ -67,8 +71,5 @@
     </div>
 </div>
 <script>
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
+    $('.datepicker').pickadate();
 </script>
