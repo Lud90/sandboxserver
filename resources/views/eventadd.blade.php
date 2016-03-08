@@ -7,9 +7,9 @@
 *
 -->
 
-@extends('partials.skeleton')
+@extends('partials.skeleton') {{-- the stuff necassary on each page--}}
 
-@section('title', 'Add Event')
+@section('title', 'Add Event') {{-- The title of the page, displays on tab --}}
 
 @section('styles')
     <link href="{{ URL::asset('css/login.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
