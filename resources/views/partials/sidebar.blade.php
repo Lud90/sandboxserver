@@ -3,7 +3,6 @@
  -->
 <div class="col s3">
     <ul class="collection collapsible" data-collapsible="accordion">
-        <li class="collection-item"><a class="black-text left-align" href="/">Home</a></li>
         <!-- will redirect to admin news -->
         <li>
             <div class="collapsible-header"><i class="material-icons"></i>News</div>
