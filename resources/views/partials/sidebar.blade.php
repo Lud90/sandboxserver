@@ -17,8 +17,8 @@
             <div class="collapsible-header"><i class="material-icons"></i>Events</div>
             <div class="collapsible-body">
                 <ul>
-                    <li class="collection-item"><a href="../api/news">Add Event</a></li>
-                    <li class="collection-item"><a href="../api/news">List Events</a></li>
+                    <li class="collection-item"><a href="../api/events">Add Event</a></li>
+                    <li class="collection-item"><a href="../api/events">List Events</a></li>
                 </ul>
             </div>
         </li>

@@ -6,19 +6,20 @@
  */
  -->
 <div class="col s9">
-        <div class="card-panel">
-            <h3>Create an Event:</h3>
-            <form>
-                <div class="input-field">
-                    <input type="text" id="title" name="title" class="validate"/>
-                    <label for="title">Title</label>
-                </div>
-                <div class="input-field">
+    <div class="card-panel">
+        <h3>Create an Event:</h3>
+        <form>
+            <div class="input-field">
+                <input type="text" id="title" name="title" class="validate"/>
+                <label for="title">Title</label>
+            </div>
+            <div class="input-field">
                         <textarea type="text" id="description" name="description"
                                   class="materialize-textarea"></textarea>
-                    <label for="description">Description</label>
-                </div>
-                <h5>Sandboxes Involved:</h5>
+                <label for="description">Description</label>
+            </div>
+            <h5>Sandboxes Involved:</h5>
+            <div class="col s6">
                 <p>
                     <input type="checkbox" id="shiftkeylabs"/>
                     <label for="shiftkeylabs">ShiftKey Labs</label>
@@ -31,6 +32,22 @@
                     <input type="checkbox" id="cultiv8"/>
                     <label for="cultiv8">Cultiv8</label>
                 </p>
+            </div>
+            <div class="col s6">
+                <p>
+                    <input type="checkbox" id="sisland"/>
+                    <label for="island">Island</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="launchbox"/>
+                    <label for="launchbox">LaunchBox</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="sparkzone"/>
+                    <label for="sparkzone">Spark Zone</label>
+                </p>
+            </div>
+            <div class="row">
                 <h5>Event Image:</h5>
                 <div class="file-field input-field">
                     <div class="btn">
@@ -42,6 +59,7 @@
                     </div>
                 </div>
                 <a class="waves-effect waves-light btn">Submit</a>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+</div>
