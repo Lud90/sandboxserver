@@ -8,7 +8,7 @@
 <div class="col s9">
     <div class="card-panel">
         <h3>Create an Event:</h3>
-        <form>
+        <form method="post">
                     <div class="row">
                         <div class="col s6"> {{-- left colunm at top of form--}}
                             <div class="input-field">
@@ -86,7 +86,9 @@
             </div>
 
             <div class="row">
-                <a type="button" id="submit" class="waves-effect waves-light btn">Submit</a>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
             </div>
         </form>
     </div>

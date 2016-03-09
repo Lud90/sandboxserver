@@ -61,5 +61,5 @@ Route::get('/admin/', function()
     return View::make('login');
 });
 
-Route::get('/admin/eventadd/', 'FP\AddEventController@addEventCreate');
-Route::post('/admin/eventadd/post', 'AddEventController@setEvent');
+Route::get('/admin/eventadd', 'FP\AddEventController@addEventCreate');
+Route::post('/admin/eventadd', 'FP\AddEventController@store');
