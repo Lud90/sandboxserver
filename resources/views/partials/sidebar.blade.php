@@ -20,7 +20,7 @@
             <div class="collapsible-header"><i class="material-icons"></i>Events</div>
             <div class="collapsible-body">
                 <ul>{{-- Events drop down options--}}
-                    <li class="collection-item"><a href="eventadd">Add Event</a></li>
+                    <li class="collection-item"><a href="/admin/eventadd/">Add Event</a></li>
                     <li class="collection-item"><a href="../api/events">List Events</a></li>
                 </ul>
             </div>

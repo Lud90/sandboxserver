@@ -34,7 +34,7 @@ class AddEventController extends Controller
         ]);
 
         if ($v->fails()) {
-
+            return redirect()->back()->withErrors($v->errors());
         } else {
             //store event
             $event = new Event;
@@ -44,9 +44,7 @@ class AddEventController extends Controller
             $event->start_time = $request->start;
             $event->end_time = $request->end;
             $event->save();
+            return view('eventadd');
         }
-
-        return view('eventadd');
-
     }
 }
