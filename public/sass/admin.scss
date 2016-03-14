@@ -10,3 +10,7 @@ header, main, footer{
   height:100%;
   vertical-align:middle;
 }
+
+.select-wrapper + label{
+  transition:none;
+}

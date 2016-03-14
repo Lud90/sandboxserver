@@ -27,7 +27,7 @@
                                 <label for="link">Website (Optional)</label>
                             </div>
                             <div class="input-field">
-                                <select multiple>
+                                <select multiple id="sandboxes" name="sandboxes">
                                     <option value="" disabled selected>Make a selection</option>
                                     <option value="cultiv8">Cultiv8</option>
                                     <option value="idea">Idea</option>
@@ -50,12 +50,12 @@
                                 <div class="input-field col s6">
                                     <input type="date" id="start" name="start"
                                            class="validate datepicker"/>
-                                    <label for="start">Start Date</label>
+                                    <label for="start" class="active">Start Date</label>
                                 </div>
                                 <div class="input-field col s6">
                                     <input type="date" id="end" name="end"
                                            class="validate datepicker"/>
-                                    <label for="end">End Date</label>
+                                    <label for="end" class="active">End Date</label>
                                 </div>
                             </div>
                             <div class="file-field input-field">

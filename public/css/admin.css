@@ -1,0 +1,12 @@
+header, main, footer {
+  padding-left: 240px; }
+
+.nav-wrapper .page-title {
+  margin-left: 2rem; }
+
+.material-icons.vmid {
+  height: 100%;
+  vertical-align: middle; }
+
+.select-wrapper + label {
+  transition: none; }
