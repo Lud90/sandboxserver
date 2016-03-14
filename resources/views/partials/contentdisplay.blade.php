@@ -8,15 +8,15 @@
 @extends('partials.skeleton')
 
 @section('styles')
-    <link href="{{ URL::asset('css/login.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
+    <link href="{{ URL::asset('css/admin.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
 @endsection
 
 @section('body')
-    <div class="row">
+    <header>
         @include('partials.header')
-    </div>
-    <div class="row"> <!-- the main content and side bar -->
-        @include('partials.sidebar')
+    </header>
+
+    <main>
         @yield('content')
-    </div>
+    </main>
 @endsection
