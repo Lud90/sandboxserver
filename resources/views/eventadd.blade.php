@@ -11,6 +11,10 @@
 
 @section('title', 'New Event') {{-- The title of the page, displays on tab --}}
 
+@section('context_buttons')
+    <li><a href="#">Save</a></li>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -75,12 +79,6 @@
                                   class="materialize-textarea"></textarea>
                         <label for="description">Description</label>
                     </div>
-
-                    <div class="row">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
                 </form>
             </div>
         </div>
@@ -95,7 +93,8 @@
 
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
-            selectYears: 5 // Creates a dropdown of 15 years to control year
+            selectYears: 2, // Creates a dropdown of 2 years to control year
+            min: new Date()
         });
     </script>
 @endsection

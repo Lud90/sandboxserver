@@ -5,8 +5,29 @@ header, main, footer {
   margin-left: 2rem; }
 
 .material-icons.vmid {
-  height: 100%;
-  vertical-align: middle; }
+  vertical-align: -25%;
+  margin-right: 2rem; }
 
 .select-wrapper + label {
   transition: none; }
+
+.collapsible-header i.material-icons {
+  width: auto; }
+
+.side-nav .collapsible-body li a {
+  margin: 0 1rem 0 2em;
+  padding-left: 5rem; }
+
+ul.side-nav.fixed li a {
+  font-size: 13px;
+  line-height: 44px;
+  height: 44px; }
+
+.bold > a {
+  font-weight: bold; }
+
+nav .page-title {
+  font-size: 2.1rem;
+  font-weight: 200; }
+
+/*# sourceMappingURL=admin.css.map */
