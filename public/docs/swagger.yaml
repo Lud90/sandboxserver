@@ -3,12 +3,12 @@ info:
   title: NS Sandbox API
   description: An API to interact data from NS Sandboxes
   version: "0.0.5"
-host: "outreach.cs.dal.ca/sandboxes/public"
+host: "outreach.cs.dal.ca"
 schemes:
   - http
   - https
 # basePath will be prefixed to all paths
-basePath: /api
+basePath: /sandbox/api
 produces:
   - application/json
 paths:
@@ -127,7 +127,7 @@ paths:
     get:
       summary: Get all sandboxes
       description: The Sandboxes endpoint returns all information on the sandboxes
-      tags: 
+      tags:
         - Sandboxes
       responses:
         200:
@@ -135,7 +135,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/sandbox'
+              $ref: '#/definitions/sandboxes'
         default:
           description: Unexpected error
           schema:
@@ -151,7 +151,7 @@ paths:
           type: number
           format: int
           required: true
-      tags: 
+      tags:
         - Sandboxes
       responses:
         200:
@@ -164,57 +164,43 @@ paths:
             $ref: '#/definitions/error'
 definitions:
   news:
+    type: array
+    items:
+      $ref: '#/definitions/article'
+  article:
     type: object
     properties:
       title:
         type: string
       author:
         type: string
-      content:
+      image:
         type: string
       postDate:
         type: string
         format: date-time
-  article:
-    type: object
-    properties:
-      title:
-        type: string
-      postDate:
-        type: string
-        format: date-time
-      content:
-        type: string
-  events:
-    type: object
-    required:
-      - id
-      - title
-      - content
-      - startTime
-    properties:
-      id:
-        type: integer
-      title:
-        type: string
       content:
         type: string
       url:
         type: string
-      startTime:
-        type: string
-        format: date-time
-        description: The datetime the event starts
-      endTime:
-        type: string
-        format: date-time
-        description: The datetime the event ends (may not be specified)
+  events:
+    type: array
+    items:
+      $ref: '#/definitions/event'
   event:
     type: object
     properties:
       id:
         type: integer
       title:
+        type: string
+      image:
+        type: string
+      content:
+        type: string
+      cost:
+        type: string
+      url:
         type: string
       startTime:
         type: string
@@ -224,14 +210,15 @@ definitions:
         type: string
         format: date-time
         description: The time the event ends
-      description:
-        type: string
+  sandboxes:
+    type: array
+    items:
+      $ref: '#/definitions/event'
   sandbox:
     type: object
     properties:
       id:
         type: integer
-        description: sandbox_id
       name:
         type: string
       address:

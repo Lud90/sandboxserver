@@ -5,12 +5,12 @@
         "description": "An API to interact data from NS Sandboxes",
         "version": "0.0.5"
     },
-    "host": "outreach.cs.dal.ca/sandboxes/public",
+    "host": "outreach.cs.dal.ca",
     "schemes": [
         "http",
         "https"
     ],
-    "basePath": "/api",
+    "basePath": "/sandbox/api",
     "produces": [
         "application/json"
     ],
@@ -192,7 +192,7 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/sandbox"
+                                "$ref": "#/definitions/sandboxes"
                             }
                         }
                     },
@@ -241,21 +241,9 @@
     },
     "definitions": {
         "news": {
-            "type": "object",
-            "properties": {
-                "title": {
-                    "type": "string"
-                },
-                "author": {
-                    "type": "string"
-                },
-                "content": {
-                    "type": "string"
-                },
-                "postDate": {
-                    "type": "string",
-                    "format": "date-time"
-                }
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/article"
             }
         },
         "article": {
@@ -264,46 +252,28 @@
                 "title": {
                     "type": "string"
                 },
+                "author": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
                 "postDate": {
                     "type": "string",
                     "format": "date-time"
                 },
                 "content": {
                     "type": "string"
+                },
+                "url": {
+                    "type": "string"
                 }
             }
         },
         "events": {
-            "type": "object",
-            "required": [
-                "id",
-                "title",
-                "content",
-                "startTime"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "content": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                },
-                "startTime": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "The datetime the event starts"
-                },
-                "endTime": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "The datetime the event ends (may not be specified)"
-                }
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/event"
             }
         },
         "event": {
@@ -315,6 +285,18 @@
                 "title": {
                     "type": "string"
                 },
+                "image": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "cost": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
                 "startTime": {
                     "type": "string",
                     "format": "date-time",
@@ -324,18 +306,20 @@
                     "type": "string",
                     "format": "date-time",
                     "description": "The time the event ends"
-                },
-                "description": {
-                    "type": "string"
                 }
+            }
+        },
+        "sandboxes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/event"
             }
         },
         "sandbox": {
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "integer",
-                    "description": "sandbox_id"
+                    "type": "integer"
                 },
                 "name": {
                     "type": "string"
