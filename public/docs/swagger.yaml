@@ -39,9 +39,7 @@ paths:
         200:
           description: Success
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/news'
+            $ref: '#/definitions/news'
         default:
           description: Unexpected error
           schema:
@@ -94,9 +92,7 @@ paths:
         200:
           description: Success
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/events'
+            $ref: '#/definitions/events'
         default:
           description: Unexpected error
           schema:
@@ -133,9 +129,7 @@ paths:
         200:
           description: Success
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/sandboxes'
+            $ref: '#/definitions/sandboxes'
         default:
           description: Unexpected error
           schema:

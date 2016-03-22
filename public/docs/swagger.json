@@ -50,10 +50,7 @@
                     "200": {
                         "description": "Success",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/news"
-                            }
+                            "$ref": "#/definitions/news"
                         }
                     },
                     "default": {
@@ -131,10 +128,7 @@
                     "200": {
                         "description": "Success",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/events"
-                            }
+                            "$ref": "#/definitions/events"
                         }
                     },
                     "default": {
@@ -190,10 +184,7 @@
                     "200": {
                         "description": "Success",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/sandboxes"
-                            }
+                            "$ref": "#/definitions/sandboxes"
                         }
                     },
                     "default": {
