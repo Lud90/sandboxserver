@@ -10,7 +10,7 @@
         "http",
         "https"
     ],
-    "basePath": "/sandbox/api",
+    "basePath": "/sandboxes/api",
     "produces": [
         "application/json"
     ],
