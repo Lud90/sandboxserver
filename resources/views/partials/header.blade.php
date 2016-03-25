@@ -23,7 +23,7 @@
                 <div class="collapsible-body">
                     <ul>
                         <li>
-                            <a href="#">New News</a>
+                            <a href="/news/new">New News</a>
                         </li>
                         <li>
                             <a href="#">List News</a>
