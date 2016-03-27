@@ -4,15 +4,30 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
-    function getEvents(){
+    function getEvents(Request $request){
 
-        $results = \App\Event::with('sandboxes')->get()->sortBy('start_time')->forPage(1,20);
-        return response()->json($results, 200);
+        $perPage = 2;
+
+        $pageNum = $request->input('page', 1);
+
+        $results = \App\Event::with('sandboxes')
+            ->where('publish_at', '<=', DB::raw('NOW()'))->where('end_time', '>=', DB::raw('CURDATE()'))
+            ->get()->sortBy('start_time')->values();
+        $page = $results->forPage($pageNum,$perPage);
+        return response()->json(array(
+            "_metadata" => array(
+                "page" => intval($pageNum),
+                "page_count" => ceil($results->count()/$perPage),
+                "total_count" => $results->count(),
+            ),
+            "events" => $page,
+        ));
     }
 
     function getEvent($event_id){
