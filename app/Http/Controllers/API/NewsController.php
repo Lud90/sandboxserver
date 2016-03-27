@@ -2,17 +2,32 @@
 
 namespace App\Http\Controllers\API;
 
-
+use DB;
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
-    function getNews(){
+    function getNews(Request $request){
 
-        $results = \App\News::with('sandboxes')->get()->sortByDesc('publish_at')->forPage(1,20);
+        $perPage = 20;
 
-        return response()->json($results, 200);
+        $pageNum = $request->input('page', 1);
+
+        $results = \App\News::with('sandboxes')
+            ->where('publish_at',  '<=', DB::raw('NOW()'))
+            ->get()->sortByDesc('publish_at');
+        $page = $results->forPage($pageNum,$perPage)->values();
+
+        return response()->json(array(
+            "_metadata" => array(
+                "page" => intval($pageNum),
+                "page_count" => ceil($results->count()/$perPage),
+                "total_count" => $results->count(),
+            ),
+            "news" => $page,
+        ));
     }
 
     function getArticle($article_id){

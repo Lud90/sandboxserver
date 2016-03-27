@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
-
 use DB;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
     function getEvents(Request $request){
 
-        $perPage = 2;
+        $perPage = 20;
 
         $pageNum = $request->input('page', 1);
 
