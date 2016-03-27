@@ -68,3 +68,6 @@ Route::get('/admin/home/', function () {
 Route::get('/admin/event/new', 'FP\AddEventController@addEventCreate');
 Route::post('/admin/event/new', 'FP\AddEventController@store');
 //Route::delete('/admin/event/{id}', 'FP\AddEventController@delete');
+
+Route::get('/admin/news/new', 'FP\AddNewsController@addNewsCreate');
+Route::post('/admin/news/new', 'FP\AddNewsController@store');

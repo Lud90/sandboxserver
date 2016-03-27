@@ -8,7 +8,7 @@ schemes:
   - http
   - https
 # basePath will be prefixed to all paths
-basePath: /sandbox/api
+basePath: /sandboxes/public/api
 produces:
   - application/json
 paths:
