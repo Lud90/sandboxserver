@@ -50,6 +50,23 @@
             </li>
         </ul>
     </li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li class="bold">
+                <a class="collapsible-header waves-effect"><i class="material-icons vmid">pin_drop</i>Sandboxes</a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a href="#">New Sandbox</a>
+                        </li>
+                        <li>
+                            <a href="#">List Sandboxes</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
     <li class="bold">
         <a class="waves-effect" href="#"><i class="material-icons vmid">fingerprint</i>Admins</a>
     </li>

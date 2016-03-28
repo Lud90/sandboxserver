@@ -30,7 +30,6 @@
                                 <input type="text" id="link" name="link" class="validate"/>
                                 <label for="link">Website (Optional)</label>
                             </div>
-                            {{-- currently the news object does not have a field for these
                             <div class="input-field">
                                 <select multiple id="sandboxes" name="sandboxes">
                                     <option value="" disabled selected>Make a selection</option>
@@ -43,7 +42,6 @@
                                 </select>
                                 <label>Host Sandboxes</label>
                             </div>
-                            --}}
                         </div>
 
                         <div class="col s6">{{-- Right colunm at top of form--}}
@@ -51,6 +49,11 @@
                                 <input type="text" id="author" name="author"
                                        class="validate"/>
                                 <label for="author">Author</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="date" id="publishAt" name="publishAt"
+                                       class="validate datepicker" placeholder="Click to choose date"/>
+                                <label for="publishAt" class="active">Publish At</label>
                             </div>
                             <div class="file-field input-field">
                                 <div class="btn">
