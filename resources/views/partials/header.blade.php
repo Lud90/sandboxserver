@@ -43,7 +43,7 @@
                             <a href="/admin/event/new">New Event</a>
                         </li>
                         <li>
-                            <a href="#">List Events</a>
+                            <a href="/admin/events">List Events</a>
                         </li>
                     </ul>
                 </div>

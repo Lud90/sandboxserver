@@ -65,9 +65,12 @@ Route::get('/admin/home/', function () {
     return View::make('adminhome');
 });
 
+Route::get('/admin/events', 'FP\EventController@listEvents');
 Route::get('/admin/event/new', 'FP\AddEventController@addEventCreate');
 Route::post('/admin/event/new', 'FP\AddEventController@store');
-//Route::delete('/admin/event/{id}', 'FP\AddEventController@delete');
+Route::get('/admin/event/{id}', 'FP\EventController@editEvent');
+Route::get('/admin/event/{id}/registered', 'FP\EventController@registeredUsers');
+Route::delete('/admin/event/delete/{id}', 'FP\EventController@deleteEvent');
 
 Route::get('/admin/news/new', 'FP\AddNewsController@addNewsCreate');
 Route::post('/admin/news/new', 'FP\AddNewsController@store');
