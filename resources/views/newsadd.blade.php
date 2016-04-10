@@ -26,35 +26,42 @@
                                 <input type="text" id="title" name="title" class="validate"/>
                                 <label for="title">Title</label>
                             </div>
-                            <div class="input-field">
-                                <input type="text" id="link" name="link" class="validate"/>
-                                <label for="link">Website (Optional)</label>
-                            </div>
-                            <div class="input-field">
-                                <select multiple id="sandboxes" name="sandboxes">
-                                    <option value="" disabled selected>Make a selection</option>
-                                    <option value="cultiv8">Cultiv8</option>
-                                    <option value="idea">Idea</option>
-                                    <option value="island">Island</option>
-                                    <option value="launchbox">Launchbox</option>
-                                    <option value="shiftkeylabs">Shiftkey Labs</option>
-                                    <option value="sparkzone">Spark Zone</option>
-                                </select>
-                                <label>Host Sandboxes</label>
-                            </div>
                         </div>
-
-                        <div class="col s6">{{-- Right colunm at top of form--}}
+                        <div class="col s6">
                             <div class="input-field">
                                 <input type="text" id="author" name="author"
                                        class="validate"/>
                                 <label for="author">Author</label>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input type="text" id="link" name="link" class="validate"/>
+                                <label for="link">Website (Optional)</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
                             <div class="input-field">
                                 <input type="date" id="publishAt" name="publishAt"
                                        class="validate datepicker" placeholder="Click to choose date"/>
                                 <label for="publishAt" class="active">Publish At</label>
                             </div>
+                        </div>
+
+                        <div class="col s6">{{-- Right colunm at top of form--}}
+                            <div class="input-field">
+                                <select multiple id="sandboxes" name="sandboxes">
+                                    <option value="" disabled selected>Make a selection</option>
+                                    @foreach ($sandboxes as $sandbox)
+                                        <option value="{{ $sandbox->id }}">{{ $sandbox->name }}</option>
+                                    @endforeach
+                                </select>
+                                <label>Host Sandboxes</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
                             <div class="file-field input-field">
                                 <div class="btn">
                                     <span>Image</span>
@@ -64,7 +71,6 @@
                                     <input id="imgpath" class="file-path validate" type="text"
                                            placeholder="Path to image">
                                 </div>
-
                             </div>
                         </div>
                     </div>

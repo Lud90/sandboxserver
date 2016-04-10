@@ -25,9 +25,40 @@ class EventController extends Controller
         return view('listEvents')->with('events', $events);
     }
 
+    function addEventCreate()
+    {
+        $sandboxes = \App\Sandbox::orderBy('name')->get();
+        return view('eventadd')->with('sandboxes', $sandboxes);
+    }
+
     function editEvent($id){
         $event = \App\Events::get($id);
-        return view('eventadd')->with('event', $event);
+        $sandboxes = \App\Sandbox::orderBy('name')->get();
+        return view('eventadd')->with('event', $event)->with('sandboxes', $sandboxes);
+    }
+
+    public function store(Request $request)
+    {
+        $v = Validator::make($request->all(), [
+            'title' => 'required|bail',
+            'description' => 'required',
+            'start' => 'required',
+            'end' => 'required'
+        ]);
+
+        if ($v->fails()) {
+            return redirect()->back()->withErrors($v->errors());
+        } else {
+            //store event
+            $event = new Event;
+            $event->title = $request->title;
+            $event->content = $request->description;
+            $event->url = $request->link;
+            $event->start_time = $request->start;
+            $event->end_time = $request->end;
+            $event->save();
+            return view('eventadd');
+        }
     }
 
     function deleteEvent($id){
