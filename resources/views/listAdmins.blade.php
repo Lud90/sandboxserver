@@ -20,11 +20,12 @@
                             {{ $admin->email }}
                         </div>
                         <div class="secondary-content">
-                            <a href="{{ action('FP\AdminController@editAdmin', $admin->id) }}"><i class="material-icons">mode_edit</i></a>
+                            <a href="{{ action('FP\AdminController@editAdmin', $admin->id) }}"><i class="material-icons grey-text">mode_edit</i></a>
                             @if($admin->id == Auth::id())
                                 <i class="material-icons">delete</i>
+                            @else
+                                <a href="{{ action('FP\AdminController@deleteAdmin', $admin->id) }}"><i class="material-icons">delete</i></a>
                             @endif
-                            <a href="{{ action('FP\AdminController@deleteAdmin', $admin->id) }}"><i class="material-icons">delete</i></a>
                         </div>
                     </div>
                 </div>
