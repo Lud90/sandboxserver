@@ -1,7 +1,7 @@
 <nav class="top-nav">
     <div class="nav-wrapper">
         <a class="page-title">@yield('title')</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right hide-on-med-and-down contextButtons">
             @yield('context_buttons')
         </ul>
 
@@ -14,7 +14,7 @@
         </a>
     </li>
     <li class="bold">
-        <a class="waves-effect" href="#"><i class="material-icons vmid">dashboard</i>Dashboard</a>
+        <a class="waves-effect" href="/"><i class="material-icons vmid">dashboard</i>Dashboard</a>
     </li>
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
@@ -67,8 +67,22 @@
             </li>
         </ul>
     </li>
-    <li class="bold">
-        <a class="waves-effect" href="#"><i class="material-icons vmid">fingerprint</i>Admins</a>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li class="bold">
+                <a class="collapsible-header waves-effect"><i class="material-icons vmid">fingerprint</i>Admins</a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a href="/admin/admin/new">New Admin</a>
+                        </li>
+                        <li>
+                            <a href="/admin/admins">List Admins</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </li>
     <li class="bold">
         <a class="waves-effect" href="#"><i class="material-icons vmid">people</i>Users</a>
@@ -77,6 +91,6 @@
         <a class="waves-effect" href="#"><i class="material-icons vmid">settings</i>Settings</a>
     </li>
     <li class="bold">
-        <a class="waves-effect" href="#"><i class="material-icons vmid">exit_to_app</i>Sign Out</a>
+        <a class="waves-effect" href="/admin/logout"><i class="material-icons vmid">exit_to_app</i>Sign Out</a>
     </li>
 </ul>

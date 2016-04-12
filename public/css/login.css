@@ -12,9 +12,13 @@ body {
     min-width: 250px;
     max-width: 400px;
     width: 20%; }
+  .login-wrapper .card-panel {
+    margin-bottom: 30px; }
 
 .card-action.block-buttons {
   padding: 0; }
   .card-action.block-buttons a {
     display: inline-block;
     padding: 20px; }
+
+/*# sourceMappingURL=login.css.map */

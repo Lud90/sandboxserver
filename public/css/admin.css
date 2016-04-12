@@ -41,3 +41,12 @@ nav .page-title {
 
 .listItem .row {
   margin-bottom: 0; }
+
+.contextButtons .material-icons {
+  display: inline-block;
+  vertical-align: top; }
+
+.container {
+  padding-top: 2rem; }
+
+/*# sourceMappingURL=admin.css.map */

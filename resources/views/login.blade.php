@@ -10,24 +10,31 @@
     <div class="valign-wrapper login-wrapper">
         <div class="valign center-block">
             <div class="card z-depth-4">
+                {!! Form::open(array('route' => 'loginAuth', 'method' => 'post', 'id' => 'loginForm')) !!}
                 <div class="card-content">
                     <span class="card-title">Admin Login</span>
-                    <form>
-                        <div class="input-field">
-                            <input type="email" id="email" name="email" class="validate"/>
-                            <label for="email">Email Address</label>
+                    @if (count($errors) > 0 )
+                        <div class="card-panel red lighten-1">
+                            <span class="white-text">
+                                {{ $errors->first() }}
+                            </span>
                         </div>
-                        <div class="input-field">
-                            <input type="password" id="password" name="password"/>
-                            <label for="password">Password</label>
-                        </div>
-                        <input type="checkbox" id="rememberme" class="filled-in" name="rememberme"/>
-                        <label for="rememberme">Remember Me</label>
-                    </form>
+                    @endif
+                    <div class="input-field">
+                        <input type="email" id="email" name="email" class="validate" value="{{ Request::old('email') }}"/>
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="password" name="password"/>
+                        <label for="password">Password</label>
+                    </div>
+                    <input type="checkbox" id="remember" class="filled-in" name="remember" checked="{{ Request::old('remember') }}"/>
+                    <label for="remember">Remember Me</label>
                 </div>
                 <div class="card-action right-align block-buttons">
-                    <a href="#" class="teal-text text-lighten1 waves-effect">Login</a>
+                    <a href="#!" onclick="document.getElementById('loginForm').submit();" class="teal-text text-lighten1 waves-effect">Login</a>
                 </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

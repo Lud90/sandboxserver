@@ -57,7 +57,7 @@ class EventController extends Controller
             $event->start_time = $request->start;
             $event->end_time = $request->end;
             $event->save();
-            return view('eventadd');
+            return redirect('/admin/events');
         }
     }
 

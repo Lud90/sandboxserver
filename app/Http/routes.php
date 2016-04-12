@@ -56,22 +56,35 @@ Route::get('/api/sandboxes/{sandbox_id}', 'API\SandboxesController@getSandbox');
 |
 */
 
-Route::get('/admin/', function()
-{
-    return View::make('login');
+Route::group(['middleware' => ['web', 'auth']], function() {
+
+
+    Route::get('/admin/', function () {
+        return View::make('dashboard');
+    })->name('dashboard');
+
+    Route::get('/admin/events', 'FP\EventController@listEvents');
+    Route::get('/admin/event/new', 'FP\EventController@addEventCreate');
+    Route::post('/admin/event/new', 'FP\EventController@store');
+    Route::get('/admin/event/{id}', 'FP\EventController@editEvent');
+    Route::get('/admin/event/{id}/registered', 'FP\EventController@registeredUsers');
+    Route::delete('/admin/event/delete/{id}', 'FP\EventController@deleteEvent');
+
+    Route::get('/admin/news', 'FP\NewsController@listNews');
+    Route::get('/admin/news/new', 'FP\NewsController@addNewsCreate');
+    Route::post('/admin/news/new', 'FP\NewsController@store');
+
+    Route::get('/admin/admins', 'FP\AdminController@listAdmins');
+    Route::get('/admin/admin/new', 'FP\AdminController@newAdmin');
+    Route::post('/admin/admin/new', 'FP\AdminController@store');
+    Route::get('/admin/admin/edit/{id}', 'FP\AdminController@editAdmin');
+    Route::delete('/admin/admin/delete/{id}', 'FP\AdminController@deleteAdmin');
+
+    Route::get('/admin/logout', 'FP\FPController@logout');
+
 });
 
-Route::get('/admin/home/', function () {
-    return View::make('adminhome');
+Route::group(['middleware' => ['web']], function() {
+    Route::get('/admin/login', 'FP\FPController@login')->name('login');
+    Route::post('/admin/login', 'FP\FPController@authenticate')->name('loginAuth');
 });
-
-Route::get('/admin/events', 'FP\EventController@listEvents');
-Route::get('/admin/event/new', 'FP\EventController@addEventCreate');
-Route::post('/admin/event/new', 'FP\EventController@store');
-Route::get('/admin/event/{id}', 'FP\EventController@editEvent');
-Route::get('/admin/event/{id}/registered', 'FP\EventController@registeredUsers');
-Route::delete('/admin/event/delete/{id}', 'FP\EventController@deleteEvent');
-
-Route::get('/admin/news', 'FP\NewsController@listNews');
-Route::get('/admin/news/new', 'FP\NewsController@addNewsCreate');
-Route::post('/admin/news/new', 'FP\NewsController@store');
