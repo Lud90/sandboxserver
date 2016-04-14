@@ -19,6 +19,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     <script>
         $(".button-collapse").sideNav();
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('js/service-worker.js');
+        }
     </script>
     @yield('endscripts')
 </body>
