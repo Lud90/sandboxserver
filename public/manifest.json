@@ -1,0 +1,7 @@
+{
+  "short_name": "NS Sandboxes",
+  "name": "NS Sandboxes Admin Panel",
+  "start_url": "/admin",
+  "display": "standalone",
+  "orientation": "portrait"
+}

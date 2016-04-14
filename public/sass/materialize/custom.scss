@@ -1,9 +1,24 @@
-header, main, footer{
-  padding-left:240px;
+@media #{$medium-and-up} {
+  header, main, footer {
+    padding-left: 240px;
+  }
+  .nav-wrapper .page-title{
+    margin-left:2rem;
+  }
 }
-
-.nav-wrapper .page-title{
-  margin-left:2rem;
+@media #{$small-and-down} {
+  .page-title{
+    margin-left:1.2em;
+  }
+ nav .button-collapse.hamburger{
+    position:absolute;
+    left:-1em;
+    transition: left 200ms;
+   &:hover{
+     left:0;
+     transition: left 200ms;
+   }
+  }
 }
 
 .material-icons.vmid{
@@ -68,4 +83,8 @@ nav .page-title{
 
 .disabled{
   cursor: not-allowed;
+}
+
+ul.bullets{
+  list-style-type: initial;
 }

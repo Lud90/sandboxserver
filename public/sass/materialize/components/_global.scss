@@ -174,7 +174,7 @@ video.responsive-video {
     float: none;
   }
 }
-@media #{$medium-and-down} {
+@media #{$medium-and-up} {
   .pagination {
     width: 100%;
 

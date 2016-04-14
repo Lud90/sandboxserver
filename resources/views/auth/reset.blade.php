@@ -23,11 +23,11 @@
                             </div>
                         @elseif(count($errors) > 0 )
                             <div class="card-panel red lighten-1">
+                                <ul class="bullets white-text">
                                 @foreach($errors->all() as $error)
-                                    <span class="white-text">
-                                        {{ $errors->first() }}
-                                    </span>
+                                    <li>{{ $errors->first() }}</li>
                                 @endforeach
+                                </ul>
                             </div>
                         @endif
                         <p>Enter a new password</p>
