@@ -56,35 +56,45 @@ Route::get('/api/sandboxes/{sandbox_id}', 'API\SandboxesController@getSandbox');
 |
 */
 
-Route::group(['middleware' => ['web', 'auth']], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
 
 
-    Route::get('/admin/', function () {
+    Route::get('/', function () {
         return View::make('dashboard');
     })->name('dashboard');
 
-    Route::get('/admin/events', 'FP\EventController@listEvents');
-    Route::get('/admin/event/new', 'FP\EventController@addEventCreate');
-    Route::post('/admin/event/new', 'FP\EventController@store');
-    Route::get('/admin/event/{id}', 'FP\EventController@editEvent');
-    Route::get('/admin/event/{id}/registered', 'FP\EventController@registeredUsers');
-    Route::delete('/admin/event/delete/{id}', 'FP\EventController@deleteEvent');
+    Route::get('dashboard', function () {
+        return View::make('dashboard');
+    })->name('dashboard');
 
-    Route::get('/admin/news', 'FP\NewsController@listNews');
-    Route::get('/admin/news/new', 'FP\NewsController@addNewsCreate');
-    Route::post('/admin/news/new', 'FP\NewsController@store');
+    Route::get('events', 'FP\EventController@listEvents');
+    Route::get('event/new', 'FP\EventController@addEventCreate');
+    Route::post('event/new', 'FP\EventController@store');
+    Route::get('event/{id}', 'FP\EventController@editEvent');
+    Route::get('event/{id}/registered', 'FP\EventController@registeredUsers');
+    Route::delete('event/delete/{id}', 'FP\EventController@deleteEvent');
 
-    Route::get('/admin/admins', 'FP\AdminController@listAdmins');
-    Route::get('/admin/admin/new', 'FP\AdminController@newAdmin');
-    Route::post('/admin/admin/new', 'FP\AdminController@store');
-    Route::get('/admin/admin/edit/{id}', 'FP\AdminController@editAdmin');
-    Route::delete('/admin/admin/delete/{id}', 'FP\AdminController@deleteAdmin');
+    Route::get('news', 'FP\NewsController@listNews');
+    Route::get('news/new', 'FP\NewsController@addNewsCreate');
+    Route::post('news/new', 'FP\NewsController@store');
 
-    Route::get('/admin/logout', 'FP\FPController@logout');
+    Route::get('/admins', 'FP\AdminController@listAdmins');
+    Route::get('admin/new', 'FP\AdminController@newAdmin');
+    Route::post('admin/new', 'FP\AdminController@store');
+    Route::get('admin/edit/{id}', 'FP\AdminController@editAdmin');
+    Route::delete('admin/delete/{id}', 'FP\AdminController@deleteAdmin');
+
+    Route::get('logout', 'FP\FPController@logout');
 
 });
 
-Route::group(['middleware' => ['web']], function() {
-    Route::get('/admin/login', 'FP\FPController@login')->name('login');
-    Route::post('/admin/login', 'FP\FPController@authenticate')->name('loginAuth');
+Route::group(['prefix' => 'admin', 'middleware' => ['web']], function() {
+    Route::get('login', 'FP\FPController@login')->name('login');
+    Route::post('login', 'FP\FPController@authenticate')->name('loginAuth');
+
+    Route::get('password/forgot', 'Auth\PasswordController@getEmail')->name('forgotPassword');
+    Route::post('password/forgot', 'Auth\PasswordController@postEmail');
+
+    Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+    Route::post('password/reset', 'Auth\PasswordController@postReset');
 });

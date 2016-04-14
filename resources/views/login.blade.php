@@ -31,8 +31,10 @@
                     <input type="checkbox" id="remember" class="filled-in" name="remember" checked="{{ Request::old('remember') }}"/>
                     <label for="remember">Remember Me</label>
                 </div>
-                <div class="card-action right-align block-buttons">
-                    <a href="#!" onclick="document.getElementById('loginForm').submit();" class="teal-text text-lighten1 waves-effect">Login</a>
+                <div class="card-action block-buttons">
+                    <a href="{{ route('forgotPassword') }}" class="teal-text text-lighten1 waves-effect left">Forgot Password</a>
+                    <a href="#!" onclick="document.getElementById('loginForm').submit();" class="teal-text text-lighten1 waves-effect right">Login</a>
+                    <div class="clearfix"></div>
                 </div>
                 {!! Form::close() !!}
             </div>

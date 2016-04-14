@@ -32,11 +32,21 @@ class FPController extends Controller
             return redirect()->route('dashboard');
         }
         var_dump($auth);
-        return back()->withErrors(['login' => \Hash::make($request->input('password'))])->withInput();
+        return back()->withErrors('Invalid username/password')->withInput();
     }
 
     function logout(){
         \Auth::logout();
         return redirect()->route('login');
+    }
+
+    function forgotPassword(){
+        return view('forgotPassword');
+    }
+
+    function forgotPasswordSubmit(Request $request){
+        $address = $request->input('email');
+        \Auth::getReset($request);
+        return view('forgotPassword')->withSuccess("If an account with the address $address exists, you will receive an email");
     }
 }
