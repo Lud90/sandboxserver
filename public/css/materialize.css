@@ -7311,7 +7311,7 @@ select {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #fff;
+  background-color: #FAFAFA;
   z-index: 999;
   overflow-y: auto;
   will-change: left; }
@@ -7365,7 +7365,7 @@ select {
   background-color: #3f51b5; }
   .side-nav .collapsible-body li.active a,
   .side-nav.fixed .collapsible-body li.active a {
-    color: #fff; }
+    color: #FAFAFA; }
 
 #sidenav-overlay {
   position: fixed;
@@ -8472,11 +8472,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
   nav .button-collapse.hamburger {
     position: absolute;
-    left: -1em;
-    transition: left 200ms; }
-    nav .button-collapse.hamburger:hover {
-      left: 0;
-      transition: left 200ms; } }
+    left: -1em; }
+
+  .itemList {
+    font-size: 16px; } }
 .material-icons.vmid {
   vertical-align: -25%;
   margin-right: 2rem; }
@@ -8527,5 +8526,8 @@ nav .page-title {
 
 ul.bullets {
   list-style-type: initial; }
+
+.pagination {
+  text-align: center; }
 
 /*# sourceMappingURL=materialize.css.map */

@@ -13,18 +13,18 @@
 
 @section('content')
     <div class="container">
-        <div class="collection">
+        <div class="collection itemList">
         @foreach ($events as $event)
             <div class="collection-item">
                 <div class="listItem">
                     <div class="row">
-                        <div class="col s2">
+                        <div class="col s8 m2">
                             {{ $event->title }}
                         </div>
-                        <div class="col s5 truncate">
+                        <div class="col s5 truncate hide-on-small-and-down">
                             {{ $event->content }}
                         </div>
-                        <div class="col s3">
+                        <div class="col s3 hide-on-small-and-down">
                             @if (date_format(date_create($event->start_time), 'M j, o') == date_format(date_create($event->end_time), 'M j, o'))
                                 {{ date_format(date_create($event->start_time), 'h:ia') }} - {{ date_format(date_create($event->end_time), 'h:ia, M j, o') }}
                             @else

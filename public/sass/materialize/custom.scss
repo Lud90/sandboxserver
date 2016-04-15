@@ -13,11 +13,9 @@
  nav .button-collapse.hamburger{
     position:absolute;
     left:-1em;
-    transition: left 200ms;
-   &:hover{
-     left:0;
-     transition: left 200ms;
-   }
+  }
+  .itemList{
+    font-size:16px;
   }
 }
 
@@ -87,4 +85,8 @@ nav .page-title{
 
 ul.bullets{
   list-style-type: initial;
+}
+
+.pagination{
+  text-align:center;
 }
