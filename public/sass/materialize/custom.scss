@@ -1,9 +1,22 @@
-header, main, footer{
-  padding-left:240px;
+@media #{$medium-and-up} {
+  header, main, footer {
+    padding-left: 240px;
+  }
+  .nav-wrapper .page-title{
+    margin-left:2rem;
+  }
 }
-
-.nav-wrapper .page-title{
-  margin-left:2rem;
+@media #{$small-and-down} {
+  .page-title{
+    margin-left:1.2em;
+  }
+ nav .button-collapse.hamburger{
+    position:absolute;
+    left:-1em;
+  }
+  .itemList{
+    font-size:16px;
+  }
 }
 
 .material-icons.vmid{
@@ -55,4 +68,25 @@ nav .page-title{
   .row{
     margin-bottom:0;
   }
+}
+
+.contextButtons .material-icons{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.container{
+  padding-top:2rem;
+}
+
+.disabled{
+  cursor: not-allowed;
+}
+
+ul.bullets{
+  list-style-type: initial;
+}
+
+.pagination{
+  text-align:center;
 }

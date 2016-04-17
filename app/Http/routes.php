@@ -17,35 +17,24 @@ Route::get('/', function () {
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
-
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
-/*
-|--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
 |
 | These routes pertain to the Sandboxes API.
 |
 */
-Route::get('/api/news', 'API\NewsController@getNews');
-Route::get('/api/news/{article_id}', 'API\NewsController@getArticle');
 
-Route::get('/api/events', 'API\EventsController@getEvents');
-Route::get('/api/events/{event_id}', 'API\EventsController@getEvent');
+Route::group(['prefix' => 'api'], function() {
+    Route::get('news', 'API\NewsController@getNews');
+    Route::get('news/{article_id}', 'API\NewsController@getArticle');
 
-Route::get('/api/sandboxes', 'API\SandboxesController@getSandboxes');
-Route::get('/api/sandboxes/{sandbox_id}', 'API\SandboxesController@getSandbox');
+    Route::get('events', 'API\EventsController@getEvents');
+    Route::get('events/{event_id}', 'API\EventsController@getEvent');
+
+    Route::get('sandboxes', 'API\SandboxesController@getSandboxes');
+    Route::get('sandboxes/{sandbox_id}', 'API\SandboxesController@getSandbox');
+
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -56,21 +45,45 @@ Route::get('/api/sandboxes/{sandbox_id}', 'API\SandboxesController@getSandbox');
 |
 */
 
-Route::get('/admin/', function()
-{
-    return View::make('login');
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
+
+
+    Route::get('/', function () {
+        return View::make('dashboard');
+    })->name('dashboard');
+
+    Route::get('dashboard', function () {
+        return View::make('dashboard');
+    })->name('dashboard');
+
+    Route::get('events', 'FP\EventController@listEvents');
+    Route::get('event/new', 'FP\EventController@addEventCreate');
+    Route::post('event/new', 'FP\EventController@store');
+    Route::get('event/{id}', 'FP\EventController@editEvent');
+    Route::get('event/{id}/registered', 'FP\EventController@registeredUsers');
+    Route::delete('event/delete/{id}', 'FP\EventController@deleteEvent');
+
+    Route::get('news', 'FP\NewsController@listNews');
+    Route::get('news/new', 'FP\NewsController@addNewsCreate');
+    Route::post('news/new', 'FP\NewsController@store');
+
+    Route::get('/admins', 'FP\AdminController@listAdmins');
+    Route::get('admin/new', 'FP\AdminController@newAdmin');
+    Route::post('admin/new', 'FP\AdminController@store');
+    Route::get('admin/edit/{id}', 'FP\AdminController@editAdmin');
+    Route::delete('admin/delete/{id}', 'FP\AdminController@deleteAdmin');
+
+    Route::get('logout', 'FP\FPController@logout');
+
 });
 
-Route::get('/admin/home/', function () {
-    return View::make('adminhome');
+Route::group(['prefix' => 'admin', 'middleware' => ['web']], function() {
+    Route::get('login', 'FP\FPController@login')->name('login');
+    Route::post('login', 'FP\FPController@authenticate')->name('loginAuth');
+
+    Route::get('password/forgot', 'Auth\PasswordController@getEmail')->name('forgotPassword');
+    Route::post('password/forgot', 'Auth\PasswordController@postEmail');
+
+    Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+    Route::post('password/reset', 'Auth\PasswordController@postReset');
 });
-
-Route::get('/admin/events', 'FP\EventController@listEvents');
-Route::get('/admin/event/new', 'FP\AddEventController@addEventCreate');
-Route::post('/admin/event/new', 'FP\AddEventController@store');
-Route::get('/admin/event/{id}', 'FP\EventController@editEvent');
-Route::get('/admin/event/{id}/registered', 'FP\EventController@registeredUsers');
-Route::delete('/admin/event/delete/{id}', 'FP\EventController@deleteEvent');
-
-Route::get('/admin/news/new', 'FP\AddNewsController@addNewsCreate');
-Route::post('/admin/news/new', 'FP\AddNewsController@store');

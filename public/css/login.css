@@ -11,10 +11,21 @@ body {
   .login-wrapper .valign {
     min-width: 250px;
     max-width: 400px;
-    width: 20%; }
+    min-width: 20%; }
+  .login-wrapper .card-panel {
+    margin-bottom: 30px; }
 
 .card-action.block-buttons {
   padding: 0; }
   .card-action.block-buttons a {
     display: inline-block;
     padding: 20px; }
+
+.card .card-action a.right {
+  margin-right: 0 !important; }
+
+ul.bullets, .bullets li {
+  list-style-type: initial;
+  margin: 0 0 0 .5em; }
+
+/*# sourceMappingURL=login.css.map */

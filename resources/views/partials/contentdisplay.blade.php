@@ -7,10 +7,6 @@
 
 @extends('partials.skeleton')
 
-@section('styles')
-    <link href="{{ URL::asset('css/admin.css') }}" rel="stylesheet" type="text/css" media="screen,projection"/>
-@endsection
-
 @section('body')
     <header>
         @include('partials.header')

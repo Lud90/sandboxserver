@@ -2110,7 +2110,7 @@ video.responsive-video {
   display: inline-block;
   float: none; }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (min-width: 601px) {
   .pagination {
     width: 100%; }
     .pagination li.prev,
@@ -7311,7 +7311,7 @@ select {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #fff;
+  background-color: #FAFAFA;
   z-index: 999;
   overflow-y: auto;
   will-change: left; }
@@ -7365,7 +7365,7 @@ select {
   background-color: #3f51b5; }
   .side-nav .collapsible-body li.active a,
   .side-nav.fixed .collapsible-body li.active a {
-    color: #fff; }
+    color: #FAFAFA; }
 
 #sidenav-overlay {
   position: fixed;
@@ -8460,5 +8460,74 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 @media (min-height: 40.125em) {
   .picker--time .picker__box {
     margin-bottom: 5em; } }
+@media only screen and (min-width: 601px) {
+  header, main, footer {
+    padding-left: 240px; }
+
+  .nav-wrapper .page-title {
+    margin-left: 2rem; } }
+@media only screen and (max-width: 600px) {
+  .page-title {
+    margin-left: 1.2em; }
+
+  nav .button-collapse.hamburger {
+    position: absolute;
+    left: -1em; }
+
+  .itemList {
+    font-size: 16px; } }
+.material-icons.vmid {
+  vertical-align: -25%;
+  margin-right: 2rem; }
+
+.select-wrapper + label {
+  transition: none; }
+
+.collapsible-header i.material-icons {
+  width: auto; }
+
+.side-nav .collapsible-body li a {
+  margin: 0 1rem 0 2em;
+  padding-left: 5rem; }
+
+ul.side-nav.fixed li a {
+  font-size: 13px;
+  line-height: 44px;
+  height: 44px; }
+
+.bold > a {
+  font-weight: bold; }
+
+nav .page-title {
+  font-size: 2.1rem;
+  font-weight: 200; }
+
+.nav-wrapper ul li a {
+  min-width: 5rem;
+  text-align: center; }
+
+.waves-effect.waves-indigo .waves-ripple {
+  /* The alpha value allows the text and background color
+  of the button to still show through. */
+  background-color: rgba(63, 81, 181, 0.65); }
+
+.listItem .row {
+  margin-bottom: 0; }
+
+.contextButtons .material-icons {
+  display: inline-block;
+  vertical-align: top; }
+
+.container {
+  padding-top: 2rem; }
+
+.disabled {
+  cursor: not-allowed; }
+
+ul.bullets {
+  list-style-type: initial; }
+
+.pagination {
+  text-align: center; }
 
 /*# sourceMappingURL=materialize.css.map */

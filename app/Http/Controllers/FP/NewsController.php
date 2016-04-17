@@ -10,18 +10,25 @@
  */
 namespace App\Http\Controllers\FP;
 
-use App\News;
+use App\Event;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class AddNewsController extends Controller
+class NewsController extends Controller
 {
+    function listNews()
+    {
+        $news = \App\News::orderBy('publish_at')->paginate(10);
+        return view('listNews')->with('news', $news);
+    }
+
     function addNewsCreate()
     {
-        return view('newsadd');
+        $sandboxes = \App\Sandbox::orderBy('name')->get();
+        return view('newsadd')->with('sandboxes', $sandboxes);
     }
 
     public function store(Request $request)
@@ -45,4 +52,15 @@ class AddNewsController extends Controller
             return view('newsadd');
         }
     }
+
+    function editNews($id){
+        $news = \App\News::get($id);
+        $sandboxes = \App\Sandbox::orderBy('name')->get();
+        return view('newsadd')->with('news', $news)->with('sandboxes', $sandboxes);
+    }
+
+    function deleteNews($id){
+
+    }
+
 }
