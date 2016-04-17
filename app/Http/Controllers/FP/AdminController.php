@@ -19,13 +19,13 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
-    function listAdmins()
+    function index()
     {
         $admins = \App\User::paginate(10);
         return view('listAdmins')->with('admins', $admins);
     }
 
-    function newAdmin(){
+    function create(){
         return view('newAdmin');
     }
     
@@ -47,8 +47,16 @@ class AdminController extends Controller
         ]);
     }
 
-    function editAdmin($id){
+    function edit($id){
 
+    }
+
+    function update(){
+
+    }
+
+    function destroy(){
+        
     }
 
     function deleteAdmin($id){

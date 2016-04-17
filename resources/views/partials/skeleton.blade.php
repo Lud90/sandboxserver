@@ -21,7 +21,7 @@
         $(".button-collapse").sideNav();
 
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('js/service-worker.js');
+            navigator.serviceWorker.register('/js/service-worker.js');
         }
     </script>
     @yield('endscripts')

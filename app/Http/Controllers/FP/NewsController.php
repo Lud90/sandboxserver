@@ -1,13 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cole
- * Date: 08/03/16
- * Time: 8:12 PM
- *
- * Currently anyone can use this to submit a new event. Once the admin login is finished we'll
- * have to make sure the user is authorized to do this
- */
 namespace App\Http\Controllers\FP;
 
 use App\Event;
@@ -19,13 +10,13 @@ use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
-    function listNews()
+    function index()
     {
         $news = \App\News::orderBy('publish_at')->paginate(10);
         return view('listNews')->with('news', $news);
     }
 
-    function addNewsCreate()
+    function create()
     {
         $sandboxes = \App\Sandbox::orderBy('name')->get();
         return view('newsadd')->with('sandboxes', $sandboxes);
@@ -53,13 +44,17 @@ class NewsController extends Controller
         }
     }
 
-    function editNews($id){
+    function edit($id){
         $news = \App\News::get($id);
         $sandboxes = \App\Sandbox::orderBy('name')->get();
         return view('newsadd')->with('news', $news)->with('sandboxes', $sandboxes);
     }
 
-    function deleteNews($id){
+    function update(){
+
+    }
+
+    function destroy($id){
 
     }
 

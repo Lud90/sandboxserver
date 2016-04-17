@@ -56,22 +56,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
         return View::make('dashboard');
     })->name('dashboard');
 
-    Route::get('events', 'FP\EventController@listEvents');
-    Route::get('event/new', 'FP\EventController@addEventCreate');
-    Route::post('event/new', 'FP\EventController@store');
-    Route::get('event/{id}', 'FP\EventController@editEvent');
-    Route::get('event/{id}/registered', 'FP\EventController@registeredUsers');
-    Route::delete('event/delete/{id}', 'FP\EventController@deleteEvent');
-
-    Route::get('news', 'FP\NewsController@listNews');
-    Route::get('news/new', 'FP\NewsController@addNewsCreate');
-    Route::post('news/new', 'FP\NewsController@store');
-
-    Route::get('/admins', 'FP\AdminController@listAdmins');
-    Route::get('admin/new', 'FP\AdminController@newAdmin');
-    Route::post('admin/new', 'FP\AdminController@store');
-    Route::get('admin/edit/{id}', 'FP\AdminController@editAdmin');
-    Route::delete('admin/delete/{id}', 'FP\AdminController@deleteAdmin');
+    Route::resource('event', 'FP\EventController', ['except' => ['show']]);
+    Route::resource('news', 'FP\NewsController', ['except' => ['show']]);
+    Route::resource('admin', 'FP\AdminController', ['except' => ['show']]);
 
     Route::get('logout', 'FP\FPController@logout');
 

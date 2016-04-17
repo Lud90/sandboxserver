@@ -1,3 +1,6 @@
+@import "materialize/materialize";
+@import "materialNote";
+
 @media #{$medium-and-up} {
   header, main, footer {
     padding-left: 240px;
@@ -10,7 +13,7 @@
   .page-title{
     margin-left:1.2em;
   }
- nav .button-collapse.hamburger{
+  nav .button-collapse.hamburger{
     position:absolute;
     left:-1em;
   }
@@ -89,4 +92,15 @@ ul.bullets{
 
 .pagination{
   text-align:center;
+}
+
+.input-field.tinymce{
+  margin-top:2rem;
+  & label.active{
+    transform: translateY(-200%);
+  }
+}
+
+.note-dialog .modal-content{
+  background-color: #ffffff;
 }

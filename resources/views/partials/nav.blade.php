@@ -13,10 +13,10 @@
             <div class="collapsible-body">
                 <ul>
                     <li>
-                        <a href="/admin/news/new">New News</a>
+                        <a href="/admin/news/create">New News</a>
                     </li>
                     <li>
-                        <a href="#">List News</a>
+                        <a href="/admin/news">List News</a>
                     </li>
                 </ul>
             </div>
@@ -30,10 +30,10 @@
             <div class="collapsible-body">
                 <ul>
                     <li>
-                        <a href="/admin/event/new">New Event</a>
+                        <a href="/admin/event/create">New Event</a>
                     </li>
                     <li>
-                        <a href="/admin/events">List Events</a>
+                        <a href="/admin/event">List Events</a>
                     </li>
                 </ul>
             </div>

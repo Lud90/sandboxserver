@@ -19,22 +19,21 @@ use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
-    function listEvents()
+    function index()
     {
         $events = \App\Event::orderBy('start_time')->paginate(10);
         return view('listEvents')->with('events', $events);
     }
 
-    function addEventCreate()
+    function create()
     {
         $sandboxes = \App\Sandbox::orderBy('name')->get();
         return view('eventadd')->with('sandboxes', $sandboxes);
     }
 
-    function editEvent($id){
-        $event = \App\Events::get($id);
+    function edit(Event $event){
         $sandboxes = \App\Sandbox::orderBy('name')->get();
-        return view('eventadd')->with('event', $event)->with('sandboxes', $sandboxes);
+        return view('eventadd')->with(['event' => $event, 'sandboxes' => $sandboxes]);
     }
 
     public function store(Request $request)
@@ -57,12 +56,17 @@ class EventController extends Controller
             $event->start_time = $request->start;
             $event->end_time = $request->end;
             $event->save();
-            return redirect('/admin/events');
+            return redirect('/admin/event');
         }
     }
 
-    function deleteEvent($id){
+    function update(){
 
+    }
+
+    function destroy(Event $event){
+        $event->delete();
+        return redirect('/admin/event');
     }
 
 }

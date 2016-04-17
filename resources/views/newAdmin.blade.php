@@ -28,7 +28,7 @@
         @endif
         <div class="row">
             <div class="col s12">
-                <form id="form" method="post">
+                <form id="form" method="post" action="{{ action('FP\AdminController@store') }}">
                     {!! csrf_field() !!}
                     <div class="row">
                         <div class="col s12 m6"> {{-- left colunm at top of form--}}
