@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\FP;
 
-use App\Event;
+use App\News;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -44,10 +44,13 @@ class NewsController extends Controller
         }
     }
 
-    function edit($id){
-        $news = \App\News::get($id);
+    function edit(News $news){
         $sandboxes = \App\Sandbox::orderBy('name')->get();
-        return view('newsadd')->with('news', $news)->with('sandboxes', $sandboxes);
+        $selectedSandboxes = array();
+        foreach($news->sandboxes as $sSandbox){
+            array_push($selectedSandboxes, $sSandbox->id);
+        }
+        return view('newsadd')->with(['news'=> $news, 'sandboxes' => $sandboxes, 'selectedSandboxes' => $selectedSandboxes]);
     }
 
     function update(){

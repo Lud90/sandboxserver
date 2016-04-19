@@ -1,16 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cole
- * Date: 08/03/16
- * Time: 8:12 PM
- *
- * Currently anyone can use this to submit a new event. Once the admin login is finished we'll
- * have to make sure the user is authorized to do this
- */
+
 namespace App\Http\Controllers\FP;
 
-use App\Event;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -47,8 +39,8 @@ class AdminController extends Controller
         ]);
     }
 
-    function edit($id){
-
+    function edit(User $admin){
+        return view('newAdmin')->with('admin', $admin);
     }
 
     function update(){

@@ -33,7 +33,11 @@ class EventController extends Controller
 
     function edit(Event $event){
         $sandboxes = \App\Sandbox::orderBy('name')->get();
-        return view('eventadd')->with(['event' => $event, 'sandboxes' => $sandboxes]);
+        $selectedSandboxes = array();
+        foreach($event->sandboxes as $sSandbox){
+            array_push($selectedSandboxes, $sSandbox->id);
+        }
+        return view('eventadd')->with(['event' => $event, 'sandboxes' => $sandboxes, 'selectedSandboxes' => $selectedSandboxes]);
     }
 
     public function store(Request $request)
@@ -56,7 +60,7 @@ class EventController extends Controller
             $event->start_time = $request->start;
             $event->end_time = $request->end;
             $event->save();
-            return redirect('/admin/event');
+            return redirect('/admin/events');
         }
     }
 
@@ -65,8 +69,7 @@ class EventController extends Controller
     }
 
     function destroy(Event $event){
-        $event->delete();
-        return redirect('/admin/event');
+
     }
 
 }

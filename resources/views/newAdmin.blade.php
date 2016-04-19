@@ -1,12 +1,3 @@
-<!--
-* Created by PhpStorm.
-* User: cole
-* Date: 04/03/16
-* Time: 3:38 PM
-* This blade is a form for adding events.
-*
--->
-
 @extends('partials.contentdisplay') {{-- the stuff necassary on each page--}}
 
 @section('title', 'New Admin') {{-- The title of the page, displays on tab --}}
@@ -28,18 +19,21 @@
         @endif
         <div class="row">
             <div class="col s12">
-                <form id="form" method="post" action="{{ action('FP\AdminController@store') }}">
-                    {!! csrf_field() !!}
+                @if(isset($admin))
+                    {!! Form::model($admin, array('route' => array('admin.event.update', $admin->id), 'files' => true)) !!}
+                @else
+                    {!! Form::open(array('route' => 'admin.event.store', 'files' => true)) !!}
+                @endif
                     <div class="row">
                         <div class="col s12 m6"> {{-- left colunm at top of form--}}
                             <div class="input-field">
-                                <input type="text" id="name" name="name" class="validate"/>
+                                {!! Form::text('name', null, array('id' => 'name', 'class' => 'validate')) !!}
                                 <label for="name">Name</label>
                             </div>
                         </div>
                         <div class="col s12 m6">
                             <div class="input-field">
-                                <input type="email" id="email" name="email" class="validate"/>
+                                {!! Form::email('email', null, array('id' => 'email', 'class' => 'validate')) !!}
                                 <label for="email">Email Address</label>
                             </div>
                         </div>
@@ -47,18 +41,18 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <div class="input-field">
-                                <input type="password" id="password" name="password" class="validate" placeholder="At least 6 characters"/>
+                                {!! Form::password('password', null, array('id' => 'password', 'class' => 'validate')) !!}
                                 <label for="password">Password</label>
                             </div>
                         </div>
                         <div class="col s12 m6">
                             <div class="input-field">
-                                <input type="password" id="password_confirmation" name="password_confirmation" class="validate" />
+                                {!! Form::password('password_confirmation', null, array('id' => 'password_confirmation', 'class' => 'validate')) !!}
                                 <label for="password_confirmation" class="active">Confirm Password</label>
                             </div>
                         </div>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

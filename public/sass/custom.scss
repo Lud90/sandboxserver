@@ -1,7 +1,7 @@
 @import "materialize/materialize";
 @import "materialNote";
 
-@media #{$medium-and-up} {
+@media #{$large-and-up} {
   header, main, footer {
     padding-left: 240px;
   }
@@ -94,7 +94,7 @@ ul.bullets{
   text-align:center;
 }
 
-.input-field.tinymce{
+.input-field.richtext{
   margin-top:2rem;
   & label.active{
     transform: translateY(-200%);
@@ -103,4 +103,8 @@ ul.bullets{
 
 .note-dialog .modal-content{
   background-color: #ffffff;
+}
+
+.note-editable{
+  min-height:30vh;
 }

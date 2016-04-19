@@ -28,8 +28,8 @@
                             {{ date_format(date_create($article->publish_at), 'h:ia, M j, o') }}
                         </div>
                         <div class="secondary-content">
-                            <a href="{{ action('FP\EventController@editEvent', $article->id) }}"><i class="material-icons">mode_edit</i></a>
-                            <a href="{{ action('FP\EventController@deleteEvent', $article->id) }}"><i class="material-icons">delete</i></a>
+                            <a href="{{ action('FP\NewsController@edit', $article->id) }}"><i class="material-icons">mode_edit</i></a>
+                            <a href="{{ action('FP\NewsController@destroy', $article->id) }}"><i class="material-icons">delete</i></a>
                         </div>
                     </div>
                 </div>

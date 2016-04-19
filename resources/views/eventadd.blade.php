@@ -14,6 +14,7 @@
 @section('styles')
     <link href="/css/codeMirror/codemirror.css" rel="stylesheet">
     <link href="/css/codeMirror/monokai.css" rel="stylesheet">
+    <link href="/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
 @endsection
 
 @section('context_buttons')
@@ -24,19 +25,21 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <form method="post">
+                @if(isset($event))
+                    {!! Form::model($event, array('route' => array('admin.event.update', $event->id), 'files' => true)) !!}
+                @else
+                    {!! Form::open(array('route' => 'admin.event.store', 'files' => true)) !!}
+                @endif
                     <div class="row">
-                        <div class="col s6"> {{-- left colunm at top of form--}}
+                        <div class="col s6"> {{-- left colunm at top of form --}}
                             <div class="input-field">
-                                <input type="text" id="title" name="title" class="validate"
-                                    value="{{ old('title', $event->title) }}"/>
+                                {!! Form::text('title', null, array('id' => 'title', 'class' => 'validate')) !!}
                                 <label for="title">Title</label>
                             </div>
                         </div>
                         <div class="col s6">
                             <div class="input-field">
-                                <input type="text" id="location" name="location" class="validate"
-                                    value="{{ old('location', $event->location) }}"/>
+                                {!! Form::text('location', null, array('id' => 'location', 'class' => 'validate')) !!}
                                 <label for="location">Location</label>
                             </div>
                         </div>
@@ -44,8 +47,7 @@
                     <div class="row">
                         <div class="col s6">
                             <div class="input-field">
-                                <input type="text" id="url" name="url" class="validate"
-                                    value="{{ old('url', $event->url) }}"/>
+                                {!! Form::text('url', null, array('id' => 'url', 'class' => 'validate')) !!}
                                 <label for="url">Website (Optional)</label>
                             </div>
                         </div>
@@ -53,15 +55,13 @@
                             <div class="row">
                                 <div class="col s12 m6">
                                     <div class="input-field">
-                                        <input type="date" id="start_time" name="start_time" class="validate datepicker"
-                                            value="{{ old('start_time', $event->start_time) }}"/>
+                                        {!! Form::text('start_time', null, array('id' => 'start_time', 'class' => 'datepicker')) !!}
                                         <label for="start" class="active">Start Date</label>
                                     </div>
                                 </div>
                                 <div class="col s12 m6">
                                     <div class="input-field">
-                                        <input type="date" id="end_time" name="end_time" class="validate datepicker"
-                                            value="{{ old('end_time', $event->end_time) }}"/>
+                                        {!! Form::text('end_time', null, array('id' => 'end_time', 'class' => 'datepicker')) !!}
                                         <label for="end" class="active">End Date</label>
                                     </div>
                                 </div>
@@ -74,7 +74,13 @@
                                 <select multiple id="sandboxes" name="sandboxes">
                                     <option value="" disabled selected>Make a selection</option>
                                     @foreach ($sandboxes as $sandbox)
-                                        <option value="{{ $sandbox->id }}">{{ $sandbox->name }}</option>
+                                        <option value="{{ $sandbox->id }}"
+
+                                                @if((old('sandboxes') || isset($selectedSandboxes)) && in_array($sandbox->id, old('sandboxes',  isset($selectedSandboxes) ? $selectedSandboxes : null)))
+                                                selected="selected"
+                                                @endif
+                                        >{{ $sandbox->name }}</option>
+
                                     @endforeach
                                 </select>
                                 <label>Host Sandboxes</label>
@@ -85,29 +91,24 @@
                             <div class="file-field input-field">
                                 <div class="btn">
                                     <span>Image</span>
-                                    <input type="file" name="image"
-                                           value="{{ old('image', $event->image) }}">
+                                    {!! Form::file('image') !!}
                                 </div>
                                 <div class="file-path-wrapper  hide-on-small-and-down">
-                                    <input id="imgpath" class="file-path validate" type="text" placeholder="Path to image"
-                                        value="{{ old('image', $event->image) }}">
+                                    <input id="imgpath" class="file-path validate" type="text" placeholder="Path to image">
                                 </div>
 
                             </div>
                         </div>
                     </div>
                     <div class="input-field">
-                        <textarea type="text" id="snippet" name="snippet"
-                                  class="materialize-textarea"></textarea>
+                        {{ Form::textarea('snippet', null, array('id' => 'snippet', 'class' => 'materialize-textarea')) }}
                         <label for="snippet">Snippet</label>
                     </div>
-                    <div class="input-field tinymce">
+                    <div class="input-field richtext">
                         <label for="contentBox">Content</label>
-                        <textarea type="text" id="contentBox" name="content"
-                                  class="materialize-textarea">{{ old('content', $event->content) }}</textarea>
-
+                        {{ Form::textarea('content', null, array('id' => 'contentBox')) }}
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
@@ -118,9 +119,13 @@
     <script src="/lib/codeMirror/xml.js"></script>
     <script src="/js/materialNote.js"></script>
     <script src="/js/ckMaterializeOverrides.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment-with-locales.min.js"></script>
+    <script src="/js/bootstrap-material-datetimepicker.js"></script>
     <script>
         $(document).ready(function() {
+
             $('select').material_select();
+
 
             var toolbar = [
                 ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'clear']],
@@ -133,10 +138,8 @@
 
         });
 
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 2, // Creates a dropdown of 2 years to control year
-            min: new Date()
-        });
+
+            $('.datepicker').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm' });
+
     </script>
 @endsection

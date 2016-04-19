@@ -8555,7 +8555,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     color: #212121;
     background-color: #e0e0e0;
     margin: 0;
-    z-index: 1052; }
+    z-index: 900; }
     .note-editor .note-toolbar ul {
       padding: 0; }
     .note-editor .note-toolbar .btn.disabled, .note-editor .note-toolbar .disabled.btn-large, .note-editor .note-toolbar button.disabled {
@@ -8979,7 +8979,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .note-toolbar .note-fontsize-10 {
   font-size: 10px; }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 993px) {
   header, main, footer {
     padding-left: 240px; }
 
@@ -9049,12 +9049,15 @@ ul.bullets {
 .pagination {
   text-align: center; }
 
-.input-field.tinymce {
+.input-field.richtext {
   margin-top: 2rem; }
-  .input-field.tinymce label.active {
+  .input-field.richtext label.active {
     transform: translateY(-200%); }
 
 .note-dialog .modal-content {
   background-color: #ffffff; }
+
+.note-editable {
+  min-height: 30vh; }
 
 /*# sourceMappingURL=materialize.css.map */
