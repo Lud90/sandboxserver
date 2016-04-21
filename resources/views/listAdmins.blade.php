@@ -47,6 +47,22 @@
     <script>
         $(function() {
             laravel.initialize();
+
+            $('#checkAll').change(function(){
+                $('.adminCheck').prop('checked', $(this).prop('checked'));
+            });
+
+            $('.eventCheck').change(function(){
+                if($('.adminCheck:checked').length == $('.adminCheck').length){
+                    $('#checkAll').prop('checked', true);
+                    $('#checkAll').prop('indeterminate', false);
+                }else if($('.adminCheck:checked').length > 0){
+                    $('#checkAll').prop('indeterminate', true);
+                }else{
+                    $('#checkAll').prop('checked', false);
+                    $('#checkAll').prop('indeterminate', false);
+                }
+            })
         });
     </script>
 @endsection

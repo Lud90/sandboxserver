@@ -59,14 +59,14 @@
             laravel.initialize();
 
             $('#checkAll').change(function(){
-                $('.eventCheck').prop('checked', $(this).prop('checked'));
+                $('.newsCheck').prop('checked', $(this).prop('checked'));
             });
 
-            $('.eventCheck').change(function(){
-                if($('.eventCheck:checked').length == $('.eventCheck').length){
+            $('.newsCheck').change(function(){
+                if($('.newsCheck:checked').length == $('.newsCheck').length){
                     $('#checkAll').prop('checked', true);
                     $('#checkAll').prop('indeterminate', false);
-                }else if($('.eventCheck:checked').length > 0){
+                }else if($('.newsCheck:checked').length > 0){
                     $('#checkAll').prop('indeterminate', true);
                 }else{
                     $('#checkAll').prop('checked', false);
