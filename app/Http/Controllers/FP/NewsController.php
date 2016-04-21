@@ -25,22 +25,45 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $v = Validator::make($request->all(), [
-            'title' => 'required|bail',
-            'description' => 'required',
-            'author' => 'required'
+            'title' => 'required',
+            'author' => 'required',
+            'url' => 'url',
+            'publish_at' => 'date',
+            'image' => 'required|image',
+            'snippet' => 'required',
+            'content' => 'required',
+
         ]);
 
         if ($v->fails()) {
             return redirect()->back()->withErrors($v->errors());
         } else {
+
+            //handle image
+            $path = public_path()."/images/";
+            $image = $request->file('image');
+            $ext = $image->guessExtension();
+            do {
+                $name = str_random(12);
+            }while(\File::exists($path.$name.'.'.$ext));
+            $image->move($path, $name.'.'.$ext);
+
             //store News
             $news = new News;
-            $news->title = $request->title;
-            $news->content = $request->description;
-            $news->url = $request->link;
-            $news->author = $request->author;
+            $news->title = $request->input('title');
+            $news->author = $request->input('author');
+            $news->url = $request->input('url');
+            if ($request->has('publish_at')) {
+                $news->publish_at = $request->input('publish_at');
+            }else{
+                $news->publish_at = date('Y-m-d H:i');
+            }
+            $news->image = $name.'.'.$ext;
+            $news->snippet = $request->input('snippet');
+            $news->content = $request->input('content');
             $news->save();
-            return view('newsadd');
+            $news->sandboxes()->attach($request->input('sandboxes'));
+            return redirect()->action('FP\NewsController@index');
         }
     }
 
@@ -53,12 +76,51 @@ class NewsController extends Controller
         return view('newsadd')->with(['news'=> $news, 'sandboxes' => $sandboxes, 'selectedSandboxes' => $selectedSandboxes]);
     }
 
-    function update(){
+    function update(News $news, Request $request){
+        $v = Validator::make($request->all(), [
+            'title' => 'required',
+            'author' => 'required',
+            'url' => 'url',
+            'publish_at' => 'date',
+            'image' => 'image',
+            'snippet' => 'required',
+            'content' => 'required',
+        ]);
 
+        if ($v->fails()) {
+            return redirect()->back()->withErrors($v->errors());
+        } else {
+            //handle image
+            if($request->hasFile('image')) {
+                $path = public_path() . "/images/";
+                $image = $request->file('image');
+                $ext = $image->guessExtension();
+                do {
+                    $name = str_random(12);
+                } while (\File::exists($path . $name . '.' . $ext));
+                $image->move($path, $name . '.' . $ext);
+                $news->image = $name.','.$ext;
+            }
+
+            $news->title = $request->input('title');
+            $news->author = $request->input('author');
+            $news->url = $request->input('url');
+            if ($request->has('publish_at')) {
+                $news->publish_at = $request->input('publish_at');
+            }else{
+                $news->publish_at = date('Y-m-d H:i');
+            }
+            $news->snippet = $request->input('snippet');
+            $news->content = $request->input('content');
+            $news->save();
+            $news->sandboxes()->attach($request->input('sandboxes'));
+            return redirect()->action('FP\NewsController@index');
+        }
     }
 
-    function destroy($id){
-
+    function destroy(News $news){
+        $news->delete();
+        return redirect()->action('FP\NewsController@index');
     }
 
 }

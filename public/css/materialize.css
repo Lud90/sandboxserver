@@ -9060,4 +9060,18 @@ ul.bullets {
 .note-editable {
   min-height: 30vh; }
 
+.input-group {
+  position: relative; }
+  .input-group input {
+    float: left;
+    width: calc(100% - 3rem); }
+  .input-group .btn, .input-group .btn-large {
+    height: 3rem; }
+    .input-group .btn .material-icons, .input-group .btn-large .material-icons {
+      line-height: 3rem; }
+
+.btn-narrow {
+  padding: 0;
+  width: 3rem; }
+
 /*# sourceMappingURL=materialize.css.map */

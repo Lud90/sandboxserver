@@ -108,3 +108,22 @@ ul.bullets{
 .note-editable{
   min-height:30vh;
 }
+
+.input-group{
+  position:relative;
+  & input{
+    float:left;
+    width: calc(100% - 3rem);
+  }
+  & .btn{
+    height:3rem;
+    & .material-icons {
+      line-height: 3rem;
+    }
+  }
+}
+
+.btn-narrow{
+  padding:0;
+  width:3rem;
+}

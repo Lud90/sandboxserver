@@ -26,7 +26,7 @@ class ModifyNewsTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
+        Schema::table('news', function ($table) {
             $table->dropColumn('image');
         });
     }

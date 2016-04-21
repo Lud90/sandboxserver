@@ -13,10 +13,10 @@
             <div class="collapsible-body">
                 <ul>
                     <li>
-                        <a href="/admin/news/create">New News</a>
+                        <a href="{{ action('FP\NewsController@create') }}">New News</a>
                     </li>
                     <li>
-                        <a href="/admin/news">List News</a>
+                        <a href="{{ action('FP\NewsController@index') }}">List News</a>
                     </li>
                 </ul>
             </div>
@@ -30,10 +30,10 @@
             <div class="collapsible-body">
                 <ul>
                     <li>
-                        <a href="/admin/event/create">New Event</a>
+                        <a href="{{ action('FP\EventController@create') }}">New Event</a>
                     </li>
                     <li>
-                        <a href="/admin/event">List Events</a>
+                        <a href="{{ action('FP\EventController@index') }} ">List Events</a>
                     </li>
                 </ul>
             </div>
@@ -64,10 +64,10 @@
             <div class="collapsible-body">
                 <ul>
                     <li>
-                        <a href="/admin/admin/new">New Admin</a>
+                        <a href="{{ action('FP\AdminController@create') }}">New Admin</a>
                     </li>
                     <li>
-                        <a href="/admin/admins">List Admins</a>
+                        <a href="{{ action('FP\AdminController@index') }}">List Admins</a>
                     </li>
                 </ul>
             </div>
@@ -81,5 +81,5 @@
     <a class="waves-effect" href="#"><i class="material-icons vmid">settings</i>Settings</a>
 </li>
 <li class="bold">
-    <a class="waves-effect" href="/admin/logout"><i class="material-icons vmid">exit_to_app</i>Sign Out</a>
+    <a class="waves-effect" href="{{ action('FP\FPController@logout') }}"><i class="material-icons vmid">exit_to_app</i>Sign Out</a>
 </li>

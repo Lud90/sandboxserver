@@ -3,7 +3,7 @@
 @section('title', 'New Admin') {{-- The title of the page, displays on tab --}}
 
 @section('context_buttons')
-    <li><a href="javascript:{}" onclick="document.getElementById('form').submit();"><i class="material-icons">done</i> Save</a></li>
+    <li><a href="javascript:{}" onclick="document.getElementById('adminForm').submit();"><i class="material-icons">done</i> Save</a></li>
 @endsection
 
 @section('content')
@@ -20,9 +20,9 @@
         <div class="row">
             <div class="col s12">
                 @if(isset($admin))
-                    {!! Form::model($admin, array('route' => array('admin.event.update', $admin->id), 'files' => true)) !!}
+                    {!! Form::model($admin, array('route' => array('admin.admin.update', $admin->id), 'files' => true, 'id' => 'adminForm')) !!}
                 @else
-                    {!! Form::open(array('route' => 'admin.event.store', 'files' => true)) !!}
+                    {!! Form::open(array('route' => 'admin.admin.store', 'files' => true, 'id' => 'adminForm')) !!}
                 @endif
                     <div class="row">
                         <div class="col s12 m6"> {{-- left colunm at top of form--}}

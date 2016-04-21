@@ -43,33 +43,103 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $v = Validator::make($request->all(), [
-            'title' => 'required|bail',
-            'description' => 'required',
-            'start' => 'required',
-            'end' => 'required'
+            'title' => 'required',
+            'cost' => 'required',
+            'url' => 'url',
+            'location' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'image' => 'image|required',
+            'content' => 'required',
         ]);
 
         if ($v->fails()) {
-            return redirect()->back()->withErrors($v->errors());
+            return redirect()->back()->withInput()->withErrors($v->errors());
         } else {
+            //handle image
+            $path = public_path()."/images/";
+            $image = $request->file('image');
+            $ext = $image->guessExtension();
+            do {
+                $name = str_random(12);
+            }while(\File::exists($path.$name.'.'.$ext));
+            $image->move($path, $name.'.'.$ext);
+
+            if($request->has('publish_at')){
+                $publish_at = $request->input('publish_at');
+            }else{
+                $publish_at = date('Y-m-d H:i');
+            }
+
             //store event
             $event = new Event;
-            $event->title = $request->title;
-            $event->content = $request->description;
-            $event->url = $request->link;
-            $event->start_time = $request->start;
-            $event->end_time = $request->end;
+            $event->title = $request->input('title');
+            $event->cost = $request->input('cost');
+            $event->publish_at = $publish_at;
+            $event->url = $request->input('url');
+            $event->start_time = $request->input('start_time');
+            $event->end_time = $request->input('end_time');
+            $event->location = $request->input('location');
+            $event->image = $name.'.'.$ext;
+            $event->snippet = $request->input('snippet');
+            $event->content = $request->input('content');
             $event->save();
-            return redirect('/admin/events');
+            $event->sandboxes()->attach($request->input('sandboxes'));
+            return redirect()->action('FP\EventController@index');
         }
     }
 
-    function update(){
+    function update(Event $event, Request $request){
+        $v = Validator::make($request->all(), [
+            'title' => 'required',
+            'cost' => 'required',
+            'url' => 'url',
+            'location' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'image' => 'image',
+            'content' => 'required',
+        ]);
 
+        if ($v->fails()) {
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        } else {
+            //handle image
+            if($request->hasFile('image')) {
+                $path = public_path() . "/images/";
+                $image = $request->file('image');
+                $ext = $image->guessExtension();
+                do {
+                    $name = str_random(12);
+                } while (\File::exists($path . $name . '.' . $ext));
+                $image->move($path, $name . '.' . $ext);
+                $event->image = $name.'.'.$ext;
+            }
+            if($request->has('publish_at')){
+                $publish_at = $request->input('publish_at');
+            }else{
+                $publish_at = date('Y-m-d H:i');
+            }
+
+            $event->title = $request->input('title');
+            $event->cost = $request->input('cost');
+            $event->publish_at = $publish_at;
+            $event->url = $request->input('url');
+            $event->start_time = $request->input('start_time');
+            $event->end_time = $request->input('end_time');
+            $event->location = $request->input('location');
+
+            $event->snippet = $request->input('snippet');
+            $event->content = $request->input('content');
+            $event->save();
+            $event->sandboxes()->attach($request->input('sandboxes'));
+            return redirect()->action('FP\EventController@index');
+        }
     }
 
     function destroy(Event $event){
-
+        $event->delete();
+        return redirect()->action('FP\EventController@index');
     }
 
 }

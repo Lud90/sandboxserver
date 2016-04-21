@@ -3,36 +3,50 @@
 @section('title', 'Administrators') {{-- The title of the page, displays on tab --}}
 
 @section('context_buttons')
-    <li><a href="#"><i class="material-icons">person_add</i> New Admin</a></li>
+    <li><a href="#"><i class="material-icons">add</i> New Admin</a></li>
 @endsection
 
 @section('content')
     <div class="container">
-        <div class="collection">
-        @foreach ($admins as $admin)
-            <div class="collection-item">
-                <div class="listItem">
-                    <div class="row">
-                        <div class="col s5">
-                            {{ $admin->name }}
-                        </div>
-                        <div class="col s5">
-                            {{ $admin->email }}
-                        </div>
-                        <div class="secondary-content">
-                            <a href="{{ action('FP\AdminController@edit', $admin->id) }}"><i class="material-icons">mode_edit</i></a>
-                            @if($admin->id == Auth::id())
-                                <i class="material-icons grey-text disabled">delete</i>
-                            @else
-                                <a href="{{ action('FP\AdminController@destroy', $admin->id) }}"><i class="material-icons">delete</i></a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-        </div>
+        <table id="adminTable">
+            <thead>
+                <th><input type="checkbox" id="checkAll"><label for="checkAll"></label></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </thead>
+            @foreach($admins as $admin)
+                <tr>
+                    <td>
+                        <input type="checkbox" class="adminCheck" id="{{ $admin->id }}"><label for="{{ $admin->id }}"></label>
+                    </td>
+                    <td>
+                        {{ $admin->name }}
+                    </td>
+                    <td>
+                        {{ $admin->email }}
+                    </td>
+                    <td>
+                        <a href="{{ action('FP\AdminController@edit', $admin->id) }}"><i class="material-icons">mode_edit</i></a>
+                        @if($admin->id == Auth::id())
+                            <i class="material-icons grey-text disabled">delete</i>
+                        @else
+                            <a href="{{ action('FP\AdminController@destroy', $admin->id) }}" data-method="delete" data-token="{{ csrf_token() }}" data-confirm="Are you sure you want to delete the admin account {{ $admin->email }}? This cannot be undone."><i class="material-icons">delete</i></a>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+        </table>
         {{ $admins->count() }} results. Page {{ $admins->currentPage() }} of {{ $admins->lastPage() }}
         {!! $admins->render() !!}
     </div>
+@endsection
+
+@section('endscripts')
+    <script src="/js/buttonMethods.js"></script>
+    <script>
+        $(function() {
+            laravel.initialize();
+        });
+    </script>
 @endsection

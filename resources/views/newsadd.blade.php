@@ -9,19 +9,27 @@
 @endsection
 
 @section('context_buttons')
-    <li><a href="javascript:{}" onclick="document.getElementById('form').submit();">Save</a></li>
+    <li><a href="#!" id="save">Save</a></li>
 @endsection
 
 @section('content')
     <div class="container">
+        @if (count($errors) > 0 )
+            <div class="card-panel red lighten-1">
+                <ul class="white-text">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row">
             <div class="col s12">
                 @if(isset($news))
-                    {!! Form::model($news, array('route' => array('admin.news.update', $news->id), 'files' => true)) !!}
+                    {!! Form::model($news, array('route' => array('admin.news.update', $news->id), 'files' => true, 'id' => 'newsForm')) !!}
                 @else
-                    {!! Form::open(array('route' => 'admin.news.store', 'files' => true)) !!}
+                    {!! Form::open(array('route' => 'admin.news.store', 'files' => true, 'id' => 'newsForm')) !!}
                 @endif
-                <form id="form" method="post">
                     <div class="row">
                         <div class="col s6"> {{-- left colunm at top of form--}}
                             <div class="input-field">
@@ -107,13 +115,17 @@
             var toolbar = [
                 ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'clear']],
                 ['undo', ['undo', 'redo', 'help']],
-                ['ckMedia', ['chImageUploader', 'ckVideoEmbedder']],
                 ['misc', ['link', 'picture', 'codeview', 'fullscreen']]
             ];
 
             $('#contentBox').materialnote({ toolbar: toolbar });
 
             $('.datepicker').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm' });
+
+            $('#save').click(function(){
+                $('#contentBox').val($('#contentBox').code());
+                $('#newsForm').submit();
+            });
         });
 
 

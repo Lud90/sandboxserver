@@ -32,27 +32,43 @@ class AdminController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        return \App\User::create([
+        User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
+        return redirect()->action('FP\AdminController@index');
+
     }
 
     function edit(User $admin){
         return view('newAdmin')->with('admin', $admin);
     }
 
-    function update(){
+    function update(User $admin, Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'confirmed|min:6',
+        ]);
 
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $admin->name = $request->input('name');
+        $admin->email = $request->input('email');
+        if($request->has('password')) {
+            $admin->password = bcrypt($request->input('password'));
+        };
+        $admin->save();
+
+        return redirect()->action('FP\AdminController@index');
     }
 
-    function destroy(){
-        
-    }
-
-    function deleteAdmin($id){
-        
+    function destroy(User $admin){
+        $admin->delete();
+        return redirect()->action('FP\AdminController@index');
     }
 
 }
