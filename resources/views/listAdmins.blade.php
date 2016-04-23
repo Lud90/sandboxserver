@@ -10,17 +10,17 @@
     <div class="container">
         <table id="adminTable">
             <thead>
-                <th><input type="checkbox" id="checkAll"><label for="checkAll"></label></th>
-                <th>Name</th>
+                <th class="hide-on-small-only"><input type="checkbox" id="checkAll"><label for="checkAll"></label></th>
+                <th class="hide-on-small-only">Name</th>
                 <th>Email</th>
                 <th>Actions</th>
             </thead>
             @foreach($admins as $admin)
                 <tr>
-                    <td>
+                    <td class="hide-on-small-only">
                         <input type="checkbox" class="adminCheck" id="{{ $admin->id }}"><label for="{{ $admin->id }}"></label>
                     </td>
-                    <td>
+                    <td class="hide-on-small-only">
                         {{ $admin->name }}
                     </td>
                     <td>

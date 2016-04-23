@@ -2,7 +2,7 @@
     <div class="nav-wrapper">
         <a href="#!" data-activates="slide-out" class="button-collapse hamburger"><i class="material-icons">menu</i></a>
         <a class="page-title">@yield('title')</a>
-        <ul class="right hide-on-med-and-down contextButtons">
+        <ul class="right contextButtons">
             @yield('context_buttons')
         </ul>
 

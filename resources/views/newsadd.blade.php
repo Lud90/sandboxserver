@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <div class="col s6">{{-- Right colunm at top of form--}}
+                        <div class="col s12">{{-- Right colunm at top of form--}}
                             <div class="input-field">
                                 <select multiple id="sandboxes" name="sandboxes">
                                     <option value="" disabled selected>Make a selection</option>
@@ -74,7 +74,7 @@
                                 <label>Host Sandboxes</label>
                             </div>
                         </div>
-                        <div class="col s6">
+                        <div class="col s12">
                             <div class="file-field input-field">
                                 <div class="btn">
                                     <span>Image</span>

@@ -59,21 +59,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s12 m6">
                             <div class="input-field">
                                 {!! Form::text('url', null, array('id' => 'url', 'class' => 'validate')) !!}
                                 <label for="url">Website (Optional)</label>
                             </div>
                         </div>
-                        <div class="col s6">
+                        <div class="col s12 m6">
                             <div class="row">
-                                <div class="col s12 m6">
+                                <div class="col s6">
                                     <div class="input-field">
                                         {!! Form::text('start_time', null, array('id' => 'start_time', 'class' => 'datepicker')) !!}
                                         <label for="start" class="active">Starts At</label>
                                     </div>
                                 </div>
-                                <div class="col s12 m6">
+                                <div class="col s6">
                                     <div class="input-field">
                                         {!! Form::text('end_time', null, array('id' => 'end_time', 'class' => 'datepicker')) !!}
                                         <label for="end" class="active">Ends At</label>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s12 m6">
                             <div class="input-field">
                                 <select multiple id="sandboxes" name="sandboxes[]">
                                     <option value="" disabled selected>Make a selection</option>
@@ -100,13 +100,13 @@
                             </div>
                         </div>
 
-                        <div class="col s6">{{-- Right colunm at top of form--}}
+                        <div class="col s12 m6">{{-- Right colunm at top of form--}}
                             <div class="file-field input-field">
                                 <div class="btn">
                                     <span>Image</span>
                                     {!! Form::file('image') !!}
                                 </div>
-                                <div class="file-path-wrapper  hide-on-small-and-down">
+                                <div class="file-path-wrapper">
                                     <input id="imgpath" class="file-path validate" type="text" placeholder="Image Path">
                                 </div>
 

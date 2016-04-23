@@ -10,20 +10,20 @@
     <div class="container">
         <table id="sandboxTable">
             <thead>
-            <th><input type="checkbox" id="checkAll"><label for="checkAll"></label></th>
+            <th class="hide-on-small-only"><input type="checkbox" id="checkAll"><label for="checkAll"></label></th>
             <th>Name</th>
-            <th>Primary Email</th>
+            <th class="hide-on-small-only">Primary Email</th>
             <th>Actions</th>
             </thead>
             @foreach($sandboxes as $sandbox)
                 <tr>
-                    <td>
+                    <td class="hide-on-small-only">
                         <input type="checkbox" class="sandboxCheck" id="{{ $sandbox->id }}"><label for="{{ $sandbox->id }}"></label>
                     </td>
                     <td>
                         {{ $sandbox->name }}
                     </td>
-                    <td>
+                    <td class="hide-on-small-only">
                         {{ $sandbox->email }}
                     </td>
                     <td>

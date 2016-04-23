@@ -22,7 +22,7 @@
                 <th><input type="checkbox" id="checkAll"><label for="checkAll"></label></th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Publish At</th>
+                <th class="hide-on-small-only">Publish At</th>
                 <th>Actions</th>
             </thead>
             @foreach ($news as $article)
@@ -36,7 +36,7 @@
                     <td>
                         {{ $article->author }}
                     </td>
-                    <td>
+                    <td class="hide-on-small-only">
                         {{ $article->publish_at }}
                     </td>
                     <td>
