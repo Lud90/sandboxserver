@@ -58,6 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() 
 
     Route::resource('event', 'FP\EventController', ['except' => ['show']]);
     Route::resource('news', 'FP\NewsController', ['except' => ['show']]);
+    Route::resource('sandbox', 'FP\SandboxController', ['except' => ['show']]);
     Route::resource('admin', 'FP\AdminController', ['except' => ['show']]);
 
     Route::get('logout', 'FP\FPController@logout');

@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('event', 'App\Event');
         $router->model('news', 'App\News');
         $router->model('admin', 'App\User');
+        $router->model('sandbox', 'App\Sandbox');
     }
 
     /**

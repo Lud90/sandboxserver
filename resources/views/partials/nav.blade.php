@@ -47,10 +47,10 @@
             <div class="collapsible-body">
                 <ul>
                     <li>
-                        <a href="#">New Sandbox</a>
+                        <a href="{{ action('FP\SandboxController@create') }}">New Sandbox</a>
                     </li>
                     <li>
-                        <a href="#">List Sandboxes</a>
+                        <a href="{{ action('FP\SandboxController@index') }}">List Sandboxes</a>
                     </li>
                 </ul>
             </div>

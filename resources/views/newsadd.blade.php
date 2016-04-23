@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col s12">
                 @if(isset($news))
-                    {!! Form::model($news, array('route' => array('admin.news.update', $news->id), 'files' => true, 'id' => 'newsForm')) !!}
+                    {!! Form::model($news, array('route' => array('admin.news.update', $news->id), 'method' => 'patch', 'files' => true, 'id' => 'newsForm')) !!}
                 @else
                     {!! Form::open(array('route' => 'admin.news.store', 'files' => true, 'id' => 'newsForm')) !!}
                 @endif

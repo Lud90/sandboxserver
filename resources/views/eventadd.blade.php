@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col s12">
                 @if(isset($event))
-                    {!! Form::model($event, array('route' => array('admin.event.update', $event->id), 'files' => true, 'id' => 'eventForm')) !!}
+                    {!! Form::model($event, array('route' => array('admin.event.update', $event->id), 'method' => 'patch', 'files' => true, 'id' => 'eventForm')) !!}
                 @else
                     {!! Form::open(array('route' => 'admin.event.store', 'files' => true, 'id' => 'eventForm')) !!}
                 @endif
