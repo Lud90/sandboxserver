@@ -9074,4 +9074,12 @@ ul.bullets {
   padding: 0;
   width: 3rem; }
 
+.card.medium.dashboardCard .card-content {
+  height: 100%;
+  max-height: 100%; }
+.card.medium.dashboardCard .giantText {
+  font-size: 10rem;
+  font-weight: 200;
+  color: #616161; }
+
 /*# sourceMappingURL=materialize.css.map */

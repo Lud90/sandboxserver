@@ -48,13 +48,11 @@ Route::group(['prefix' => 'api'], function() {
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function() {
 
 
-    Route::get('/', function () {
-        return View::make('dashboard');
-    })->name('dashboard');
+    Route::get('/', 'FP\FPController@dashboard')->name('dashboard');
 
     Route::get('dashboard', function () {
-        return View::make('dashboard');
-    })->name('dashboard');
+        return redirect()->route('dashboard');
+    });
 
     Route::resource('event', 'FP\EventController', ['except' => ['show']]);
     Route::resource('news', 'FP\NewsController', ['except' => ['show']]);

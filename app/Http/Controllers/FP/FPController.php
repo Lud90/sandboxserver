@@ -26,6 +26,11 @@ class FPController extends Controller
         return view('login');
     }
 
+    function dashboard(){
+        $eventCount = \App\Event::where('start_time', '>', 'NOW()')->count();
+        return view('dashboard')->with('eventCount', $eventCount);
+    }
+
     function authenticate(Request $request){
         $auth = \Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $request->input('remember'));
         if($auth){

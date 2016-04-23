@@ -4,7 +4,7 @@
     </a>
 </li>
 <li class="bold">
-    <a class="waves-effect" href="/"><i class="material-icons vmid">dashboard</i>Dashboard</a>
+    <a class="waves-effect" href="{{ route('dashboard') }}"><i class="material-icons vmid">dashboard</i>Dashboard</a>
 </li>
 <li class="no-padding">
     <ul class="collapsible collapsible-accordion">

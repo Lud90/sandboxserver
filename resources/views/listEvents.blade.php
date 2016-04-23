@@ -45,7 +45,7 @@
                 </tr>
             @endforeach
         </table>
-        {{ $events->count() }} results. Page {{ $events->currentPage() }} of {{ $events->lastPage() }}
+        <span>{{ $events->total() }} Results &mdash; Showing {{ $events->firstItem() }} to {{ $events->lastItem() }}</span> <span class="right">Page {{ $events->currentPage() }} of {{ $events->lastPage() }}</span>
         {!! $events->render() !!}
     </div>
 @endsection
