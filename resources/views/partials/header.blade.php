@@ -1,3 +1,6 @@
+{{--
+    Header and side navigation
+--}}
 <nav class="top-nav">
     <div class="nav-wrapper">
         <a href="#!" data-activates="slide-out" class="button-collapse hamburger"><i class="material-icons">menu</i></a>

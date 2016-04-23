@@ -1,3 +1,6 @@
+{{--
+    Login form
+--}}
 @extends('partials.skeleton')
 
 @section('title', 'Login')

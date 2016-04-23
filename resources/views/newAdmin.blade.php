@@ -1,6 +1,13 @@
-@extends('partials.contentdisplay') {{-- the stuff necassary on each page--}}
+{{--
+    New admin page and edit admin page
+--}}
+@extends('partials.adminPanel')
 
-@section('title', 'New Admin') {{-- The title of the page, displays on tab --}}
+@if(Request::is('*/create'))
+    @section('title', 'New Admin')
+@else
+    @section('title', 'Edit Admin')
+@endif
 
 @section('context_buttons')
     <li><a href="javascript:{}" onclick="document.getElementById('adminForm').submit();"><i class="material-icons">done</i> Save</a></li>
@@ -19,6 +26,7 @@
         @endif
         <div class="row">
             <div class="col s12">
+                {{-- If we're editing, associate form with model and use patch method. Otherwise, use a basic form --}}
                 @if(isset($admin))
                     {!! Form::model($admin, array('route' => array('admin.admin.update', $admin->id), 'files' => true, 'id' => 'adminForm')) !!}
                 @else
@@ -56,18 +64,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('endscripts')
-    <script>
-        $(document).ready(function () {
-            $('select').material_select();
-        });
-
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 2, // Creates a dropdown of 2 years to control year
-            min: new Date()
-        });
-    </script>
 @endsection

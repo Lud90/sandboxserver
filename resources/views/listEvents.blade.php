@@ -1,6 +1,6 @@
-@extends('partials.contentdisplay') {{-- the stuff necassary on each page--}}
+@extends('partials.adminPanel')
 
-@section('title', 'All Events') {{-- The title of the page, displays on tab --}}
+@section('title', 'All Events')
 
 @section('context_buttons')
     <li><a href="{{ action('FP\EventController@create') }}"><i class="material-icons">add</i> New Event</a></li>
@@ -25,6 +25,7 @@
                         {{ $event->title }}
                     </td>
                     <td class="hide-on-small-only">
+                        {{-- Display date differently if the event starts and ends on different days --}}
                         @if (date_format(date_create($event->start_time), 'M j, o') == date_format(date_create($event->end_time), 'M j, o'))
                             {{ date_format(date_create($event->start_time), 'h:ia') }} - {{ date_format(date_create($event->end_time), 'h:ia, M j, o') }}
                         @else
@@ -57,6 +58,7 @@
 
             laravel.initialize();
 
+            //checkbox logic
             $('#checkAll').change(function(){
                 $('.eventCheck').prop('checked', $(this).prop('checked'));
             });

@@ -1,3 +1,9 @@
+{{--
+    Basic setup for email
+
+    Include branding here
+--}}
+
 <!doctype html>
 <html>
     <head>

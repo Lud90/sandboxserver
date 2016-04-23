@@ -1,3 +1,6 @@
+{{--
+    Navigation list used in both side menus
+--}}
 <li class="logo no-padding center-align">
     <a id="logo-container no-padding" class="brand-logo" href="#" style="height:140px">
         <img src="/img/placeholder_logo.png" alt="NS Sandboxes" style="width:140px">

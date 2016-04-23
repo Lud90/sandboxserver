@@ -1,9 +1,9 @@
-@extends('partials.contentdisplay') {{-- the stuff necassary on each page--}}
+@extends('partials.adminPanel')
 
-@section('title', 'Administrators') {{-- The title of the page, displays on tab --}}
+@section('title', 'Administrators')
 
 @section('context_buttons')
-    <li><a href="#"><i class="material-icons">add</i> New Admin</a></li>
+    <li><a href="{{ action('FP\AdminController@create') }}"><i class="material-icons">add</i> New Admin</a></li>
 @endsection
 
 @section('content')
@@ -28,6 +28,7 @@
                     </td>
                     <td>
                         <a href="{{ action('FP\AdminController@edit', $admin->id) }}"><i class="material-icons">mode_edit</i></a>
+                        {{-- Disable delete button for logged-in user --}}
                         @if($admin->id == Auth::id())
                             <i class="material-icons grey-text disabled">delete</i>
                         @else
@@ -37,7 +38,7 @@
                 </tr>
             @endforeach
         </table>
-        {{ $admins->count() }} results. Page {{ $admins->currentPage() }} of {{ $admins->lastPage() }}
+        <span>{{ $admins->total() }} Results &mdash; Showing {{ $admins->firstItem() }} to {{ $admins->lastItem() }}</span> <span class="right">Page {{ $admins->currentPage() }} of {{ $admins->lastPage() }}</span>
         {!! $admins->render() !!}
     </div>
 @endsection
@@ -48,6 +49,7 @@
         $(function() {
             laravel.initialize();
 
+            //handle checkbox logic
             $('#checkAll').change(function(){
                 $('.adminCheck').prop('checked', $(this).prop('checked'));
             });

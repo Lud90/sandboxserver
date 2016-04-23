@@ -1,3 +1,7 @@
+{{--
+    Reset password page
+--}}
+
 @extends('partials.skeleton')
 
 @section('title', 'Forgot Password')

@@ -1,15 +1,6 @@
-<!--
-* Created by PhpStorm.
-* User: cole
-* Date: 04/03/16
-* Time: 3:38 PM
-* This blade is a form for adding events.
-*
--->
+@extends('partials.adminPanel')
 
-@extends('partials.contentdisplay') {{-- the stuff necassary on each page--}}
-
-@section('title', 'All News') {{-- The title of the page, displays on tab --}}
+@section('title', 'All News')
 
 @section('context_buttons')
     <li><a href="{{ action('FP\NewsController@create') }}"><i class="material-icons">add</i> New News</a></li>
@@ -58,6 +49,7 @@
         $(function() {
             laravel.initialize();
 
+            //checkbox logic
             $('#checkAll').change(function(){
                 $('.newsCheck').prop('checked', $(this).prop('checked'));
             });

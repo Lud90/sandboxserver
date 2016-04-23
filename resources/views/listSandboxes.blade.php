@@ -1,6 +1,6 @@
-@extends('partials.contentdisplay') {{-- the stuff necassary on each page--}}
+@extends('partials.adminPanel')
 
-@section('title', 'Sandboxes') {{-- The title of the page, displays on tab --}}
+@section('title', 'Sandboxes')
 
 @section('context_buttons')
     <li><a href="{{ action('FP\SandboxController@create') }}"><i class="material-icons">add</i> New Sandbox</a></li>
@@ -37,7 +37,7 @@
                 </tr>
             @endforeach
         </table>
-        {{ $sandboxes->count() }} results. Page {{ $sandboxes->currentPage() }} of {{ $sandboxes->lastPage() }}
+        <span>{{ $sandboxes->total() }} Results &mdash; Showing {{ $sandboxes->firstItem() }} to {{ $sandboxes->lastItem() }}</span> <span class="right">Page {{ $sandboxes->currentPage() }} of {{ $sandboxes->lastPage() }}</span>
         {!! $sandboxes->render() !!}
     </div>
 @endsection
@@ -48,6 +48,7 @@
         $(function() {
             laravel.initialize();
 
+            //checkbox logic
             $('#checkAll').change(function(){
                 $('.sandboxCheck').prop('checked', $(this).prop('checked'));
             });

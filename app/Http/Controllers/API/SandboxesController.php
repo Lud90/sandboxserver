@@ -9,12 +9,23 @@ use App\Http\Controllers\Controller;
 
 class SandboxesController extends Controller
 {
+    /**
+     * Get all sandboxes
+     *
+     * @return mixed
+     */
     function getSandboxes(){
         $results = \App\Sandbox::get()->sortBy('id');
 
         return response()->json($results, 200);
     }
 
+    /**
+     * Get all data on a single sandbox
+     *
+     * @param $sandbox_id
+     * @return mixed
+     */
     function getSandbox($sandbox_id){
         $result = \App\Sandbox::find($sandbox_id);
 

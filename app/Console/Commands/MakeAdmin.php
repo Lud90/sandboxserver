@@ -41,20 +41,27 @@ class MakeAdmin extends Command
     {
         $data = [];
         if($this->option("password")){
+            //get the user to put in a password and confirmation
             $password = $this->secret('Enter a password:');
             $confirm = $this->secret('Enter the password again to confirm:');
+
+            //make sure they match
             if($password != $confirm){
                 $this->error("Passwords do not match!");
                 return;
             }
             $data['password'] = $password;
         }else{
+            //generate a random password
             $data['password'] = str_random(16);
             $this->info("Randomly generated password: ".$data['password']);
         }
+        //Use provided name or empty string
         $data['name'] = ($this->option("name") ?: '');
+
         $data['email'] = $this->argument("email");
 
+        //Create the admin
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],

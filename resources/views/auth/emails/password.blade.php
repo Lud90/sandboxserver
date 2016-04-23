@@ -1,3 +1,9 @@
+{{--
+    Forgot Password Email
+
+    Make sure to follow email HTML restrictions
+--}}
+
 @extends('partials.skeleton')
 
 @section('title', 'Forgot Password')

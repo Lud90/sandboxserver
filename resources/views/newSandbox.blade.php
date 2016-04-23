@@ -1,6 +1,10 @@
-@extends('partials.contentdisplay') {{-- the stuff necassary on each page--}}
+@extends('partials.adminPanel')
 
-@section('title', 'New Sandbox') {{-- The title of the page, displays on tab --}}
+@if(Request::is('*/create'))
+    @section('title', 'New Sandbox')
+@else
+    @section('title', 'Edit Sandbox')
+@endif
 
 @section('context_buttons')
     <li><a href="#!" onclick="document.getElementById('sandboxForm').submit();"><i class="material-icons">done</i> Save</a></li>
@@ -19,6 +23,7 @@
         @endif
         <div class="row">
             <div class="col s12">
+                {{-- If we're editing, associate form with model and use patch method. Otherwise, use a basic form --}}
                 @if(isset($sandbox))
                     {!! Form::model($sandbox, array('route' => array('admin.sandbox.update', $sandbox->id), 'method' => 'patch', 'id' => 'sandboxForm')) !!}
                 @else

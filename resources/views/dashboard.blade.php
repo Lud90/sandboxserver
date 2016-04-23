@@ -1,15 +1,7 @@
-<!--
-* Created by PhpStorm.
-* User: cole
-* Date: 04/03/16
-* Time: 3:38 PM
-* This blade is a form for adding events.
-*
--->
 
-@extends('partials.contentdisplay') {{-- the stuff necassary on each page--}}
+@extends('partials.adminPanel')
 
-@section('title', 'Dashboard') {{-- The title of the page, displays on tab --}}
+@section('title', 'Dashboard')
 
 @section('scripts')
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

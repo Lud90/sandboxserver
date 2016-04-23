@@ -19,36 +19,76 @@ use Illuminate\Support\Facades\Validator;
 
 class FPController extends Controller
 {
+
+    /**
+     * Modification of standard login that redirects
+     * if the user is already logged in
+     *
+     * @return mixed
+     */
     function login(){
         if(\Auth::check()){
             return redirect()->route('dashboard');
         }
-        return view('login');
+        return view('auth.login');
     }
 
+    /**
+     * Loads the dashboard with the data needed for the cards
+     *
+     * @return mixed
+     */
     function dashboard(){
-        $eventCount = \App\Event::where('start_time', '>', 'NOW()')->count();
+        //get the number of upcoming events
+        $eventCount = \App\Event::where('start_time', '>', DB::raw('NOW()'))->count();
+
         return view('dashboard')->with('eventCount', $eventCount);
     }
 
+    /**
+     * Try to log in with provided credentials
+     *
+     * @param Request $request
+     * @return mixed
+     */
     function authenticate(Request $request){
         $auth = \Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $request->input('remember'));
         if($auth){
+            //logged in, go to dashboard
             return redirect()->route('dashboard');
         }
-        var_dump($auth);
         return back()->withErrors('Invalid username/password')->withInput();
     }
 
+    /**
+     * Log out and return to login page
+     * 
+     * @return mixed
+     */
     function logout(){
         \Auth::logout();
         return redirect()->route('login');
     }
-
+    
+    /**
+     * Show forgot password page
+     * 
+     * @return mixed
+     */
     function forgotPassword(){
         return view('forgotPassword');
     }
 
+    /**
+     * Send an email if the provided address exists
+     *
+     * Don't tell the user if it was successful, as
+     * that would let an attacker know the email is
+     * valid
+     *
+     * @param Request $request
+     * @return mixed
+     */
     function forgotPasswordSubmit(Request $request){
         $address = $request->input('email');
         \Auth::getReset($request);
