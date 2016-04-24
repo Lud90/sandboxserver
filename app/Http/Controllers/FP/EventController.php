@@ -27,7 +27,17 @@ class EventController extends Controller
      */
     function index()
     {
-        $events = \App\Event::orderBy('start_time')->paginate(10);
+        $events = \App\Event::where('end_time', '>', date('Y-m-d H:i'))->orderBy('start_time')->paginate(10);
+        return view('listEvents')->with('events', $events);
+    }
+
+    /**
+     * List events from the past
+     *
+     * @return mixed
+     */
+    function listArchive(){
+        $events = \App\Event::where('end_time', '<', date('Y-m-d H:i'))->orderBy('start_time')->paginate(10);
         return view('listEvents')->with('events', $events);
     }
 

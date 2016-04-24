@@ -40,7 +40,7 @@ class FPController extends Controller
      */
     function dashboard(){
         //get the number of upcoming events
-        $eventCount = \App\Event::where('start_time', '>', DB::raw('NOW()'))->count();
+        $eventCount = \App\Event::where('start_time', '>', date('Y-m-d H:i'))->count();
 
         return view('dashboard')->with('eventCount', $eventCount);
     }

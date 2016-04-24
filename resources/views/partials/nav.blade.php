@@ -11,8 +11,15 @@
 </li>
 <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
-        <li class="bold">
-            <a class="collapsible-header waves-effect"><i class="material-icons vmid">chrome_reader_mode</i>News</a>
+            @if(Request::is('admin/news*'))
+                <li class="bold active">
+                    <a class="collapsible-header waves-effect active">
+            @else
+                <li class="bold">
+                    <a class="collapsible-header waves-effect">
+            @endif
+                        <i class="material-icons vmid">chrome_reader_mode</i>News
+                    </a>
             <div class="collapsible-body">
                 <ul>
                     <li>
@@ -28,15 +35,25 @@
 </li>
 <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
-        <li class="bold">
-            <a class="collapsible-header waves-effect"><i class="material-icons vmid">event</i>Events</a>
+        @if(Request::is('admin/event*'))
+            <li class="bold active">
+                <a class="collapsible-header waves-effect active">
+        @else
+            <li class="bold">
+                <a class="collapsible-header waves-effect">
+        @endif
+                <i class="material-icons vmid">event</i>Events
+            </a>
             <div class="collapsible-body">
                 <ul>
                     <li>
                         <a href="{{ action('FP\EventController@create') }}">New Event</a>
                     </li>
                     <li>
-                        <a href="{{ action('FP\EventController@index') }} ">List Events</a>
+                        <a href="{{ action('FP\EventController@index') }} ">Upcoming Events</a>
+                    </li>
+                    <li>
+                        <a href="{{ action('FP\EventController@listArchive') }} ">Archived Events</a>
                     </li>
                 </ul>
             </div>
@@ -45,8 +62,15 @@
 </li>
 <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
-        <li class="bold">
-            <a class="collapsible-header waves-effect"><i class="material-icons vmid">pin_drop</i>Sandboxes</a>
+        @if(Request::is('admin/sandbox*'))
+            <li class="bold active">
+                <a class="collapsible-header waves-effect active">
+        @else
+            <li class="bold">
+                <a class="collapsible-header waves-effect">
+        @endif
+                <i class="material-icons vmid">pin_drop</i>Sandboxes
+            </a>
             <div class="collapsible-body">
                 <ul>
                     <li>
@@ -62,8 +86,15 @@
 </li>
 <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
-        <li class="bold">
-            <a class="collapsible-header waves-effect"><i class="material-icons vmid">fingerprint</i>Admins</a>
+        @if(Request::is('admin/admin*'))
+            <li class="bold active">
+                <a class="collapsible-header waves-effect active">
+        @else
+            <li class="bold">
+                <a class="collapsible-header waves-effect">
+        @endif
+                <i class="material-icons vmid">fingerprint</i>Admins
+            </a>
             <div class="collapsible-body">
                 <ul>
                     <li>
