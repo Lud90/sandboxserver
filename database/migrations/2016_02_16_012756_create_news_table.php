@@ -16,9 +16,11 @@ class CreateNewsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('author');
-            $table->mediumText('content');
+            $table->string('image');
             $table->string('url');
             $table->dateTime('publish_at');
+            $table->string('snippet');
+            $table->mediumText('content');
             $table->timestamps();
         });
     }
