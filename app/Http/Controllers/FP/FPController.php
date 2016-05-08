@@ -94,4 +94,28 @@ class FPController extends Controller
         \Auth::getReset($request);
         return view('forgotPassword')->withSuccess("If an account with the address $address exists, you will receive an email");
     }
+
+    static function generateSelectbox($sandboxes, $oldInput){
+        ?>
+        <select multiple id="sandboxes" name="sandboxes[]">
+            <option value="" disabled selected>Make a selection</option>
+        <?php foreach ($sandboxes as $sandbox){ ?>
+            <option value="<?= $sandbox->id ?>"
+                <?php
+                if(is_array($oldInput)) {
+                    if (in_array($sandbox->id, $oldInput)) {
+                        echo 'selected="selected"';
+                    }
+                }else if(is_int($oldInput)){
+                    if($sandbox->id == $oldInput){
+                        echo 'selected="selected"';
+                    }
+                }else{
+                    echo gettype($oldInput);
+                } ?>
+            > <?= $sandbox->name ?></option>
+        <?php } ?>
+        </select>
+        <?php
+    }
 }

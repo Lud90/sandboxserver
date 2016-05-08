@@ -92,18 +92,7 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <div class="input-field">
-                                <select multiple id="sandboxes" name="sandboxes[]">
-                                    <option value="" disabled selected>Make a selection</option>
-                                    @foreach ($sandboxes as $sandbox)
-                                        <option value="{{ $sandbox->id }}"
-                                                {{-- Multiple selects don't work with standard old().
-                                                If there is old data or model data, check the array for the ids that indicate which boxes should be checked --}}
-                                                @if((old('sandboxes') || isset($selectedSandboxes)) && in_array($sandbox->id, old('sandboxes',  isset($selectedSandboxes) ? $selectedSandboxes : null)))
-                                                selected="selected"
-                                                @endif
-                                        >{{ $sandbox->name }}</option>
-                                    @endforeach
-                                </select>
+                                {{ \App\Http\Controllers\FP\FPController::generateSelectbox($sandboxes, $selectedSandboxes) }}
                                 <label for="sandboxes">Host Sandboxes</label>
                             </div>
                         </div>
