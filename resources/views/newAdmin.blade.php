@@ -28,7 +28,7 @@
             <div class="col s12">
                 {{-- If we're editing, associate form with model and use patch method. Otherwise, use a basic form --}}
                 @if(isset($admin))
-                    {!! Form::model($admin, array('route' => array('admin.admin.update', $admin->id), 'files' => true, 'id' => 'adminForm')) !!}
+                    {!! Form::model($admin, array('route' => array('admin.admin.update', $admin->id), 'method' => 'patch', 'files' => true, 'id' => 'adminForm')) !!}
                 @else
                     {!! Form::open(array('route' => 'admin.admin.store', 'files' => true, 'id' => 'adminForm')) !!}
                 @endif
