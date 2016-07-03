@@ -66,7 +66,8 @@
 
                         <div class="col s12">{{-- Right colunm at top of form--}}
                             <div class="input-field">
-                                {{ \App\Http\Controllers\FP\FPController::generateSelectbox($sandboxes, $selectedSandboxes) }}
+                                 {{--\App\Http\Controllers\FP\FPController::generateSelectbox($sandboxes, $selectedSandboxes)--}}
+                                {!! Form::select('age', ['sandbox#1', 'sandbox#2', 'sandbox#3'])!!}
                                 <label>Host Sandboxes</label>
                             </div>
                         </div>

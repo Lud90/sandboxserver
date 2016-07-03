@@ -14,8 +14,10 @@
 @endsection
 
 @section('context_buttons')
-    {{-- Save function in bottomscripts --}}
-    <li><a href="#!" id="save">Save</a></li>
+    {{-- Save function in bottomscripts
+    <li><a href="javascript:{}" onclick="document.getElementById('eventForm').submit();"><i class="material-icons">done</i> Save</a></li>--}}
+    <li><a href="javascript:{}" id="save">Save</a></li>
+
 @endsection
 
 @section('content')
@@ -92,7 +94,8 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <div class="input-field">
-                                {{ \App\Http\Controllers\FP\FPController::generateSelectbox($sandboxes, $selectedSandboxes) }}
+                                {!! Form::select('age', ['sandbox#1', 'sandbox#2', 'sandbox#3'])!!}
+                              {{-- \App\Http\Controllers\FP\FPController::generateSelectbox($sandboxes, $old ) --}}
                                 <label for="sandboxes">Host Sandboxes</label>
                             </div>
                         </div>
@@ -134,11 +137,10 @@
     <script src="/js/bootstrap-material-datetimepicker.js"></script>
 
     <script>
-        $(document).ready(function() {
+      {{}}  $(document).ready(function() {
 
             //create the material select box
             $('select').material_select();
-
             var toolbar = [
                 ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'ul', 'ol', 'clear']],
                 ['undo', ['undo', 'redo', 'help']],
@@ -151,12 +153,13 @@
             //create datepickers with minimum date/time of now.
             $('.datepicker').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD HH:mm', minDate: moment() });
 
+
             //on save click
             $('#save').click(function(){
                 //copy materialnote data to the actual textbox
                 $('#contentBox').val($('#contentBox').code());
                 //submit the form
-                $('#eventForm').submit();
+                $('#eventsForm').submit();
             });
 
         });
