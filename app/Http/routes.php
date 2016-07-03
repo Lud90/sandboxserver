@@ -34,6 +34,8 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('sandboxes', 'API\SandboxesController@getSandboxes');
     Route::get('sandboxes/{sandbox_id}', 'API\SandboxesController@getSandbox');
 
+    Route::post('registration', 'API\RegistrationsController@register');
+
 });
 
 /*
