@@ -30,7 +30,7 @@ class NewsController extends Controller
     function create()
     {
         //get sandboxes for select box
-        $sandboxes = \App\Sandbox::orderBy('name')->get();
+        $sandboxes = \App\Sandbox::orderBy('name')->lists('name', 'id');
 
         return view('newNews')->with('sandboxes', $sandboxes);
     }
@@ -86,7 +86,7 @@ class NewsController extends Controller
         $news->content = $request->input('content');
         $news->save();
         //associate with sandbox, if not already
-        $news->sandboxes()->sync($request->input('sandboxes'), false);
+//        $news->sandboxes()->sync($request->input('sandboxes'), false);
 
         return redirect()->action('FP\NewsController@index');
     }
