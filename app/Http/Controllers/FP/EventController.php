@@ -71,6 +71,7 @@ class EventController extends Controller
             'end_time' => 'required',
             'image' => 'image|required',
             'content' => 'required',
+            'sandboxes' => 'required',
         ]);
 
         //if input is invalid, go back with errors and old input
@@ -119,7 +120,7 @@ class EventController extends Controller
      */
     function edit(Event $event){
         //get sandboxes for select box
-        $sandboxes = \App\Sandbox::orderBy('name')->get(['id', 'name']);
+        $sandboxes = \App\Sandbox::orderBy('name')->lists('name', 'id');
 
         //get the sandboxes associated with this event so we can check the right boxes
         $selectedSandboxes = array();
@@ -148,6 +149,7 @@ class EventController extends Controller
             'end_time' => 'required',
             'image' => 'image',
             'content' => 'required',
+            'sandboxes' => 'required',
         ]);
 
         if ($v->fails()) {

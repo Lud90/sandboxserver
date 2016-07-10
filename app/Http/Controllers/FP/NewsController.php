@@ -52,6 +52,7 @@ class NewsController extends Controller
             'image' => 'required|image',
             'snippet' => 'required',
             'content' => 'required',
+            'sandboxes' => 'required',
 
         ]);
 
@@ -126,6 +127,7 @@ class NewsController extends Controller
             'image' => 'image',
             'snippet' => 'required',
             'content' => 'required',
+            'sandboxes' => 'required',
         ]);
 
         if ($v->fails()) {

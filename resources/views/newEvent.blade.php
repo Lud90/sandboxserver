@@ -94,7 +94,12 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <div class="input-field">
-                                {!! Form::select(' ', $sandboxes)!!}
+                                {{--{!! Form::select(' ', $sandboxes)!!}--}}
+                                {!! Form::select('sandboxes[]',
+                                $sandboxes,
+                                null,
+                                ['class' => 'form-control',
+                                'multiple' => 'multiple', 'name' => 'sandboxes[]']) !!}
                                 <label for="sandboxes">Host Sandboxes</label>
                             </div>
                         </div>
