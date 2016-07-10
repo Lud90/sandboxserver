@@ -21,6 +21,8 @@ class CreateEventsTable extends Migration
             $table->string('location');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
+            $table->dateTime('publish_at');
+            $table->string('tags');
             $table->string('snippet');
             $table->mediumText('content');
             $table->timestamps();
