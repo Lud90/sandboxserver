@@ -94,10 +94,7 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <div class="input-field">
-                                {{--{!! Form::select('age', ['sandbox#1', 'sandbox#2', 'sandbox#3'])!!}--}}
                                 {!! Form::select(' ', $sandboxes)!!}
-
-                              {{-- \App\Http\Controllers\FP\FPController::generateSelectbox($sandboxes, $old ) --}}
                                 <label for="sandboxes">Host Sandboxes</label>
                             </div>
                         </div>
@@ -161,7 +158,7 @@
                 //copy materialnote data to the actual textbox
                 $('#contentBox').val($('#contentBox').code());
                 //submit the form
-                $('#eventsForm').submit();
+                $('#eventForm').submit();
             });
 
         });

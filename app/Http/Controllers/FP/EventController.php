@@ -49,7 +49,7 @@ class EventController extends Controller
     function create()
     {
         //get sandbox data for select box
-        $sandboxes = \App\Sandbox::orderBy('name')->get(['id', 'name']);
+        $sandboxes = \App\Sandbox::orderBy('name')->lists('name', 'id');
         return view('newEvent')->with('sandboxes', $sandboxes);
     }
 

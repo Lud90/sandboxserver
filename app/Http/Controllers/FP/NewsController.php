@@ -86,7 +86,7 @@ class NewsController extends Controller
         $news->content = $request->input('content');
         $news->save();
         //associate with sandbox, if not already
-//        $news->sandboxes()->sync($request->input('sandboxes'), false);
+        $news->sandboxes()->sync($request->input('sandboxes'), false);
 
         return redirect()->action('FP\NewsController@index');
     }
