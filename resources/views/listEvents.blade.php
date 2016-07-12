@@ -52,6 +52,7 @@
 
         @endforeach
 
+        {{--This is the previous Events Table. Maybe we could use it for the archived events? --}}
         {{--<table id="eventsTable">--}}
             {{--<thead>--}}
             {{--<th class="hide-on-small-only"><input type="checkbox" id="checkAll"><label for="checkAll"></label></th>--}}
