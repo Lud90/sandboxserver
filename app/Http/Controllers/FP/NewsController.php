@@ -100,7 +100,7 @@ class NewsController extends Controller
      */
     function edit(News $news){
         //get sandboxes for select box
-        $sandboxes = \App\Sandbox::orderBy('name')->get();
+        $sandboxes = \App\Sandbox::orderBy('name')->lists('name','id');
 
         //get the sandboxes associated with this event so we can check the right boxes
         $selectedSandboxes = array();
