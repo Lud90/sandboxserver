@@ -156,8 +156,12 @@ class EventController extends Controller
             return redirect()->back()->withInput()->withErrors($v->errors());
         }
         
-        //handle image, if one was provided
-        if($request->hasFile('image')) {
+        // Handle image, if one was provided
+        if ($request->hasFile('image')) {
+            // Delete old image
+            $prevImage = public_path() . "/images/" . $event->image;
+            \File::delete($prevImage);
+
             $path = public_path() . "/images/";
             $image = $request->file('image');
             $ext = $image->guessExtension();
@@ -201,6 +205,10 @@ class EventController extends Controller
      * @throws \Exception
      */
     function destroy(Event $event){
+        // Delete associated image
+        $prevImage = public_path() . "/images/" . $event->image;
+        \File::delete($prevImage);
+
         $event->delete();
         return redirect()->action('FP\EventController@index');
     }

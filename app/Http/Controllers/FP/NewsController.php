@@ -136,6 +136,10 @@ class NewsController extends Controller
 
         //handle image, if one was provided
         if($request->hasFile('image')) {
+            // Delete old image
+            $prevImage = public_path() . "/images/" . $news->image;
+            \File::delete($prevImage);
+            
             $path = public_path() . "/images/";
             $image = $request->file('image');
             $ext = $image->guessExtension();
